@@ -5,19 +5,102 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Business_System_Laboration_4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Affärssystem laboration 4" Height="720" Width="1080" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
 
 
     <Grid>
+      
         <TabControl>
-            <TabItem Header="Customer" DataContext="{Binding CustomerViewModel}">
+            <TabItem Header="Kassa" DataContext="{Binding CustomerViewModel}">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Böcker" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Dataspel" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Filmer" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    
+                    <DockPanel LastChildFill="False" Grid.Column="1" Grid.Row="0" Margin="10 0 0 0">
+                        <TextBlock Text="Varukorg" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                        <Label Content="Totalt:" VerticalAlignment="Center" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                    <DockPanel LastChildFill="False" Grid.Column="1" Grid.Row="2" Margin="0 0 10 0">
+                        <Button Content="Köp" VerticalAlignment="Center" DockPanel.Dock="Right" Width="50"/>
+                    </DockPanel>
 
+                    <DataGrid Grid.Row="1" Grid.Column="0"  Margin="10 0 10 10">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="" IsReadOnly="True" Width="100"/>
+                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Författare" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Genre" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Format" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Språk" IsReadOnly="True" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Grid.Row="3" Grid.Column="0"  Margin="10 0 10 10">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="" IsReadOnly="True" Width="100"/>
+                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Plattform" IsReadOnly="True" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <DataGrid Grid.Row="5" Grid.Column="0"  Margin="10 0 10 10">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="" IsReadOnly="True" Width="100"/>
+                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Format" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Speltid" IsReadOnly="True" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Staff" DataContext="{Binding StaffViewModel}">
+            <TabItem Header="Lager" DataContext="{Binding StaffViewModel}">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Böcker" VerticalAlignment="Center"/>
+
+                    <DataGrid Grid.Row="1">
+                        <DataGrid.Columns>
+                            <DataGridCheckBoxColumn CanUserResize="False" Width="Auto">
+                                <DataGridCheckBoxColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <CheckBox/>
+                                    </DataTemplate>
+                                </DataGridCheckBoxColumn.HeaderTemplate>
+                            </DataGridCheckBoxColumn>
+
+                            <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="Auto"/>
+                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Pris" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Författare" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Genre" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Format" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Språk" IsReadOnly="True" Width="*"/>
+                            <DataGridTemplateColumn Header="Antal" IsReadOnly="True" Width="Auto"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
                 </Grid>
             </TabItem>
