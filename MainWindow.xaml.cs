@@ -16,9 +16,12 @@ namespace Business_System_Laboration_4
     /// </summary>
     public partial class MainWindow : Window
     {
+       private ViewModelBase _viewModelBase;
         public MainWindow()
         {
             InitializeComponent();
+            _viewModelBase=new ViewModelBase();
+            DataContext=_viewModelBase;
         }
     }
 }

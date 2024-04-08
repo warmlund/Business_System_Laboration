@@ -6,7 +6,21 @@
         xmlns:local="clr-namespace:Business_System_Laboration_4"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
 
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="Customer" DataContext="{Binding CustomerViewModel}">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Staff" DataContext="{Binding StaffViewModel}">
+                <Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
-</Window>
+    </Window>

@@ -1,17 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Business_System_Laboration_4.ViewModelBase">
-    <Position X="3.25" Y="6" Width="2.25" />
+  <Class Name="Business_System_Laboration_4.ViewModelBase" Collapsed="true">
+    <Position X="6.5" Y="6" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAIAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAAAAAAIAAAAgAAAAAAEAIAAAAAAAAA=</HashCode>
       <FileName>ViewModelBase.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CustomerViewModel" />
+      <Property Name="StaffViewModel" />
+    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Field Name="_products" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.21" />
   </Class>
-  <Class Name="Business_System_Laboration_4.Product">
+  <Class Name="Business_System_Laboration_4.Product" Collapsed="true">
     <Position X="5.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAIAAAAAAAAAQAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -21,8 +25,8 @@
       <Field Name="_type" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Business_System_Laboration_4.StaffViewModel">
-    <Position X="0.75" Y="8.5" Width="2" />
+  <Class Name="Business_System_Laboration_4.StaffViewModel" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAIQAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StaffViewModel.cs</FileName>
@@ -60,19 +64,38 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Business_System_Laboration_4.Command" Collapsed="true">
-    <Position X="0.75" Y="6" Width="1.5" />
+    <Position X="4" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAACAAQAAEAAAAAAAAAAAAAAAAAAAABEAAA=</HashCode>
       <FileName>Command.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Business_System_Laboration_4.CustomerViewModel">
-    <Position X="4.75" Y="8.5" Width="1.5" />
+  <Class Name="Business_System_Laboration_4.CustomerViewModel" Collapsed="true">
+    <Position X="10.25" Y="5.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAABAAAAAAAAAEAAAAAAAAAAAAAAAAAACA=</HashCode>
       <FileName>CustomerViewModel.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="Business_System_Laboration_4.MainWindow" Collapsed="true">
+    <Position X="6.5" Y="8.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="_viewModelBase" Type="Business_System_Laboration_4.ViewModelBase">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.11" Y="0.852" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_viewModelBase" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Enum Name="Business_System_Laboration_4.Genre" Collapsed="true">
     <Position X="8" Y="0.75" Width="1.5" />
