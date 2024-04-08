@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace Business_System_Laboration_4
 {
@@ -10,16 +6,20 @@ namespace Business_System_Laboration_4
     {
         private List<Product> _products;
 
+        public CustomerViewModel CustomerViewModel { get; }
+        public StaffViewModel StaffViewModel { get; }
+
         public ViewModelBase()
         {
-            throw new System.NotImplementedException();
+            CustomerViewModel = new CustomerViewModel();
+            StaffViewModel = new StaffViewModel();
         }
+
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public void LoadProducts()
         {
-            throw new System.NotImplementedException();
         }
     }
 }
