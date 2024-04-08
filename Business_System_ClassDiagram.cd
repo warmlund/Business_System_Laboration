@@ -14,7 +14,7 @@
   <Class Name="Business_System_Laboration_4.Product">
     <Position X="5.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AgAAIAAAAAAAAAQAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Product.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -62,9 +62,10 @@
   <Class Name="Business_System_Laboration_4.Command" Collapsed="true">
     <Position X="0.75" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAACAAQAAEAAAAAAAAAAAAAAAAAAAABEAAA=</HashCode>
       <FileName>Command.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Business_System_Laboration_4.CustomerViewModel">
     <Position X="4.75" Y="8.5" Width="1.5" />
