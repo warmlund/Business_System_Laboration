@@ -7,9 +7,9 @@ namespace Business_System_Laboration_4
 {
     public class Product
     {
-        private int _price;
-        private int _name;
-        private ProductType _type;
-        private int _id;
+        public int Price { get; set; }
+        public string Name { get; set; }
+        public int Id { get; set; }
+        public ProductType Type { get; set; }
     }
 }
