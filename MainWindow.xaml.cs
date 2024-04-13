@@ -22,6 +22,15 @@ namespace Business_System_Laboration_4
             InitializeComponent();
             _viewModelBase=new ViewModelBase();
             DataContext=_viewModelBase;
+
+            ResourceDictionary resourceDict = new ResourceDictionary();
+            resourceDict.Source = new Uri("Styles.xaml", UriKind.Relative);
+            this.Resources.MergedDictionaries.Add(resourceDict);
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
