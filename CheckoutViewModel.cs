@@ -5,15 +5,15 @@ namespace Business_System_Laboration_4
 {
     public class CheckoutViewModel : INotifyPropertyChanged
     {
-        private int _totalPrice;
+        private float _totalPrice;
         private ObservableCollection<Product> _cartItems;
         public ObservableCollection<Product> CartItems { get { return _cartItems; } set { _cartItems = value; OnPropertyChanged(nameof(CartItems)); } }
-        public int TotalPrice { get => _totalPrice; set { _totalPrice = value; OnPropertyChanged(nameof(TotalPrice)); } }
+        public float TotalPrice { get => _totalPrice; set { _totalPrice = value; OnPropertyChanged(nameof(TotalPrice)); } }
         public Command ConfirmPurchase { get; private set; }
-        public Command AddItemToCart { get; private set; }
-        public Command RemoveItemFromCart { get; private set; }
-        public Command IncreaseItemInCart { get; private set; }
-        public Command DecreaseItemInCart { get; private set; }
+        public Command<Product> AddItemToCart { get; private set; }
+        public Command<Product> RemoveItemFromCart { get; private set; }
+        public Command<Product> IncreaseItemInCart { get; private set; }
+        public Command<Product> DecreaseItemInCart { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -21,10 +21,11 @@ namespace Business_System_Laboration_4
         {
             _totalPrice = 0;
             ConfirmPurchase = new Command(Checkout, CanPurchase);
-            AddItemToCart = new Command(AddToCart, CanAddToCart);
-            RemoveItemFromCart = new Command(RemoveFromCart, CanRemoveFromCart);
-            IncreaseItemInCart = new Command(IncreaseItem, CanIncrease);
-            DecreaseItemInCart = new Command(DecreaseItem, CanDecrease);
+            AddItemToCart = new Command<Product>(AddToCart, CanAddToCart);
+            RemoveItemFromCart = new Command<Product>(RemoveFromCart, CanRemoveFromCart);
+            IncreaseItemInCart = new Command<Product>(IncreaseItem, CanIncrease);
+            DecreaseItemInCart = new Command<Product>(DecreaseItem, CanDecrease);
+            _cartItems = new ObservableCollection<Product>();
         }
 
         public void Checkout()
@@ -32,22 +33,23 @@ namespace Business_System_Laboration_4
             return;  
         }
 
-        public void RemoveFromCart()
+        public void RemoveFromCart(Product product)
         {
             return;
         }
 
-        public void AddToCart()
+        public void AddToCart(Product product)
+        {
+           CartItems.Add(product);
+            TotalPrice+= product.Price; 
+        }
+
+        public void IncreaseItem(Product product)
         {
             return;
         }
 
-        public void IncreaseItem()
-        {
-            return;
-        }
-
-        public void DecreaseItem()
+        public void DecreaseItem(Product product)
         {
             return;
         }
