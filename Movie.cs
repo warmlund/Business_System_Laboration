@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Business_System_Laboration_4
+﻿namespace Business_System_Laboration_4
 {
-    internal class Movie : Product
+    public class Movie : Product
     {
-        private Business_System_Laboration_4.VideoFormat _videoFormat;
+        private MovieFormatType _videoFormat;
         private int _playTime;
+
+        public MovieFormatType VideoFormat { get { return _videoFormat; } set { _videoFormat = value; } }
+        public int PlayTime{ get { return _playTime; } set { _playTime = value; } }
+
+        public Movie(string id, int amount, float price, string name, MovieFormatType videoFormat, int playTime) :base(id, amount, price, name)
+        {
+            _videoFormat = videoFormat;
+            _playTime = playTime;
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Business_System_Laboration_4
 {
-    public enum VideoFormat
+    public enum MovieFormatType
     {
         DVD,
         Blue_Ray

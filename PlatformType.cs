@@ -1,6 +1,6 @@
 ﻿namespace Business_System_Laboration_4
 {
-    public enum Platform
+    public enum PlatformType
     {
         PC,
         Playstation_5,

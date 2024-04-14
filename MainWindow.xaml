@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Business_System_Laboration_4"
+        xmlns:local="clr-namespace:Business_System_Laboration_4" d:DataContext="{d:DesignInstance Type=local:ViewModelBase}"
         mc:Ignorable="d"
-        Height="720" Width="1080" WindowStartupLocation="CenterScreen" Background="#CD4954" Foreground="#F5F9F9" Title="Laboration 4" WindowStyle="ThreeDBorderWindow">
+        Height="720" Width="1080" WindowStartupLocation="CenterScreen" Background="#CD4954" Foreground="#F5F9F9" Title="Laboration 4" WindowStyle="ThreeDBorderWindow" local:WindowEvents.EnableClosing="True" local:WindowEvents.EnableLoading="True">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -17,7 +17,7 @@
 
     <Grid>
         <TabControl Margin="0 10 0 0" Style="{StaticResource CustomTabControlStyle}">
-            <TabItem Header="Kassa" DataContext="{Binding CheckoutViewModel}" Style="{StaticResource TabStyle}">
+            <TabItem Header="Kassa" Style="{StaticResource TabStyle}">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -51,45 +51,45 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="{Binding Name}" FontWeight="Bold"/>
                                     <TextBlock Grid.Column="1" Text="{Binding Id}"/>
-                                    <Button Grid.Column="3" Content="Remove" Command="{Binding DataContext.RemoveFromCart, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" CommandParameter="{Binding}" HorizontalAlignment="Right"/>
+                                    <Button Grid.Column="3" Content="Remove" Command="{Binding RemoveItemFromCart }" HorizontalAlignment="Right"/>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                        <Button Content="Genomför Köp" Style="{StaticResource ButtonStyle}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                        <Button Content="Genomför Köp" Command="{Binding CheckoutViewModel.ConfirmPurchase}" Style="{StaticResource ButtonStyle}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
 
-                    <DataGrid Grid.Row="1" Grid.Column="0"  Margin="10,0,10,10" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="1" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=Books, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="" IsReadOnly="True" Width="100"/>
-                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Författare" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Genre" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Format" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Språk" IsReadOnly="True" Width="*"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Författare" IsReadOnly="True" Width="*" Binding="{Binding Author}"/>
+                            <DataGridTextColumn  Header="Genre" IsReadOnly="True" Width="*" Binding="{Binding Genre}"/>
+                            <DataGridTextColumn  Header="Format" IsReadOnly="True" Width="*" Binding="{Binding BookFormat}"/>
+                            <DataGridTextColumn  Header="Språk" IsReadOnly="True" Width="*" Binding="{Binding Language}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <DataGrid Grid.Row="3" Grid.Column="0"  Margin="10,0,10,10" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="3" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=VideoGames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="" IsReadOnly="True" Width="100"/>
-                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Plattform" IsReadOnly="True" Width="*"/>
+                            <DataGridTextColumn Header="" IsReadOnly="True" Width="100" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Plattform" IsReadOnly="True" Width="*" Binding="{Binding Platform}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <DataGrid Grid.Row="5" Grid.Column="0"  Margin="10,0,10,10" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="5" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=Movies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTemplateColumn Header="" IsReadOnly="True" Width="100"/>
-                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Format" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Speltid" IsReadOnly="True" Width="*"/>
+                            <DataGridTextColumn Header="" IsReadOnly="True" Width="100" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding VideoFormat}"/>
+                            <DataGridTextColumn Header="Speltid" IsReadOnly="True" Width="*" Binding="{Binding PlayTime}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Lager" DataContext="{Binding StaffViewModel}"  Style="{StaticResource TabStyle}">
+            <TabItem Header="Lager" DataContext="{Binding StockViewModel}"  Style="{StaticResource TabStyle}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
