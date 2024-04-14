@@ -83,6 +83,8 @@
         <Setter Property="CanUserReorderColumns" Value="False"/>
         <Setter Property="CanUserSortColumns" Value="False"/>
         <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="RowHeight" Value="30"/>
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DataGridHeaderStyle}"/>
     </Style>
 
