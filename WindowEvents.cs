@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Windows;
-
+﻿using System.Windows;
 
 
 namespace Business_System_Laboration_4

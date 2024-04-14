@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Business_System_Laboration_4" d:DataContext="{d:DesignInstance Type=local:ViewModelBase}"
+        xmlns:local="clr-namespace:Business_System_Laboration_4" 
+        d:DataContext="{d:DesignInstance Type=local:ViewModelBase}"
         mc:Ignorable="d"
-        Height="720" Width="1080" WindowStartupLocation="CenterScreen" Background="#CD4954" Foreground="#F5F9F9" Title="Laboration 4" WindowStyle="ThreeDBorderWindow" local:WindowEvents.EnableClosing="True" local:WindowEvents.EnableLoading="True">
+        Height="900" Width="1440" WindowStartupLocation="CenterScreen" Background="#CD4954" Foreground="#F5F9F9" Title="Laboration 4" WindowStyle="ThreeDBorderWindow"  ResizeMode="NoResize" local:WindowEvents.EnableClosing="True" local:WindowEvents.EnableLoading="True">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -32,13 +33,13 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Column="0" Text="Böcker" VerticalAlignment="Center" Margin="10,0,0,0" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Dataspel" VerticalAlignment="Center" Margin="10,0,0,0" Grid.ColumnSpan="2"/>
-                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Filmer" VerticalAlignment="Center" Margin="10,0,0,0" Grid.ColumnSpan="2"/>
+                    <TextBlock Grid.Column="0" Text="Böcker" VerticalAlignment="Center" Margin="10,0,0,0" Grid.ColumnSpan="2" Style="{StaticResource TextTitleStyles}"/>
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Dataspel" VerticalAlignment="Center" Margin="10,0,0,0" Grid.ColumnSpan="2" Style="{StaticResource TextTitleStyles}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Filmer" VerticalAlignment="Center" Margin="10,0,0,0" Grid.ColumnSpan="2" Style="{StaticResource TextTitleStyles}"/>
 
-                    <DockPanel LastChildFill="False" Grid.Column="2" Grid.Row="0" Margin="0,0,10,0">
-                        <TextBlock Text="Varukorg" VerticalAlignment="Center" DockPanel.Dock="Left"/>
-                        <Label Content="Totalt:" VerticalAlignment="Center" DockPanel.Dock="Right"/>
+                    <DockPanel LastChildFill="False" Grid.Column="2" Grid.Row="0"  Margin="0,0,10,0">
+                        <TextBlock Text="Varukorg" VerticalAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource TextTitleStyles}"/>
+                        <Label Content="{Binding CheckoutViewModel.TotalPrice}" ContentStringFormat="Totalt: {0:C}" Language="sv-SE" VerticalAlignment="Center" DockPanel.Dock="Right"/>
                     </DockPanel>
 
                     <ListBox ItemsSource="{Binding CheckoutViewModel.CartItems}" Grid.Column="1" Grid.Row="1" Margin="0 0 10 10" Style="{StaticResource ListBoxStyle}">
@@ -61,7 +62,15 @@
 
                     <DataGrid Grid.Row="1" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=Books, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price}"/>
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding Price}"  ContentStringFormat=" {0:C}" Language="sv-SE" Command="{Binding DataContext.CheckoutViewModel.AddItemToCart, 
+                          RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                           
                             <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Författare" IsReadOnly="True" Width="*" Binding="{Binding Author}"/>
                             <DataGridTextColumn  Header="Genre" IsReadOnly="True" Width="*" Binding="{Binding Genre}"/>
@@ -72,7 +81,13 @@
 
                     <DataGrid Grid.Row="3" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=VideoGames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="" IsReadOnly="True" Width="100" Binding="{Binding Price}"/>
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding Price}"  ContentStringFormat=" {0:C}" Language="sv-SE" Command="{Binding CheckoutViewModel.AddItemToCart}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Plattform" IsReadOnly="True" Width="*" Binding="{Binding Platform}"/>
                         </DataGrid.Columns>
@@ -80,7 +95,13 @@
 
                     <DataGrid Grid.Row="5" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=Movies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="" IsReadOnly="True" Width="100" Binding="{Binding Price}"/>
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding Price}" ContentStringFormat=" {0:C}" Language="sv-SE" Command="{Binding CheckoutViewModel.AddItemToCart}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding VideoFormat}"/>
                             <DataGridTextColumn Header="Speltid" IsReadOnly="True" Width="*" Binding="{Binding PlayTime}"/>
