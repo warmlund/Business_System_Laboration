@@ -22,7 +22,7 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="250"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
@@ -39,38 +39,39 @@
 
                     <DockPanel LastChildFill="False" Grid.Column="2" Grid.Row="0"  Margin="0,0,10,0">
                         <TextBlock Text="Varukorg" VerticalAlignment="Center" DockPanel.Dock="Left" Style="{StaticResource TextTitleStyles}"/>
-                        <Label Content="{Binding CheckoutViewModel.TotalPrice}" ContentStringFormat="Totalt: {0:C}" Language="sv-SE" VerticalAlignment="Center" DockPanel.Dock="Right"/>
+                        <Label Content="{Binding Cart.TotalPrice}" ContentStringFormat="Totalt: {0:C}" Language="sv-SE" VerticalAlignment="Center" DockPanel.Dock="Right"/>
+                        <Label Content="{Binding Cart.TotalQuantity}" ContentStringFormat="Antal: {0}" VerticalAlignment="Center" DockPanel.Dock="Left"/>
                     </DockPanel>
 
-                    <ListBox ItemsSource="{Binding CheckoutViewModel.CartItems}" Grid.Column="1" Grid.Row="1" Margin="0 0 10 10" Style="{StaticResource ListBoxStyle}">
+                    <ListBox ItemsSource="{Binding Cart.CartItems}" Grid.Column="1" Grid.Row="1" Margin="0 0 10 10" Style="{StaticResource ListBoxStyle}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding Name}" FontWeight="Bold"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Id}"/>
-                                    <Button Grid.Column="3" Content="Remove" Command="{Binding RemoveItemFromCart }" HorizontalAlignment="Right"/>
+                                    <Label Grid.Column="0" Content="{Binding CartQuantity}" ContentStringFormat=" {0}x" Padding="10,0,10,0" VerticalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                    <Button Grid.Column="2" Content="X" HorizontalAlignment="Right" Style="{StaticResource RemoveButtonStyle}" CommandParameter="{Binding}" Padding="10,0,10,0"/>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
 
-                        <Button Content="Genomför Köp" Command="{Binding CheckoutViewModel.ConfirmPurchase}" Style="{StaticResource ButtonStyle}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                    <Button Content="Genomför Köp" Command="{Binding ConfirmPurchase, Mode=OneWay}" Style="{StaticResource ButtonStyle}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
 
-                    <DataGrid Grid.Row="1" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=Books, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="1" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Books, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Header="">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding Price}"  ContentStringFormat=" {0:C}" Language="sv-SE" Command="{Binding DataContext.CheckoutViewModel.AddItemToCart, 
-                          RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Button Content="{Binding Price}" Command="{Binding DataContext.AddItemToCart, RelativeSource={RelativeSource AncestorType=DataGrid}}" Language="sv-SE" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                           
+
                             <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Författare" IsReadOnly="True" Width="*" Binding="{Binding Author}"/>
                             <DataGridTextColumn  Header="Genre" IsReadOnly="True" Width="*" Binding="{Binding Genre}"/>
@@ -79,12 +80,12 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <DataGrid Grid.Row="3" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=VideoGames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="3" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.VideoGames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Header="">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding Price}"  ContentStringFormat=" {0:C}" Language="sv-SE" Command="{Binding CheckoutViewModel.AddItemToCart}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Button Content="{Binding Price}" Language="sv-SE" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -93,12 +94,12 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <DataGrid Grid.Row="5" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=Movies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="5" Grid.Column="0"  Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Movies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTemplateColumn Header="">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding Price}" ContentStringFormat=" {0:C}" Language="sv-SE" Command="{Binding CheckoutViewModel.AddItemToCart}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Button Content="{Binding Price}" Command="{Binding DataContext.AddItemToCart, RelativeSource={RelativeSource AncestorType=DataGrid}}" Language="sv-SE" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -110,7 +111,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Lager" DataContext="{Binding StockViewModel}"  Style="{StaticResource TabStyle}">
+            <TabItem Header="Lager" Style="{StaticResource TabStyle}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>

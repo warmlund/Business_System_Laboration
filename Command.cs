@@ -5,12 +5,12 @@ namespace Business_System_Laboration_4
     public class Command<T> : ICommand
     {
         private Action<T> methodToExecuteWithParam = null;
-        private Func<bool> canMethodBeExecuted = null;
+        private Func<T, bool> canMethodBeExecuted = null;
         private Action methodToExecute = null;
 
         public event EventHandler CanExecuteChanged;
 
-        public Command(Action<T> methodToExecute, Func<bool> canMethodBeExecuted)
+        public Command(Action<T> methodToExecute, Func<T, bool> canMethodBeExecuted)
         {
             this.methodToExecuteWithParam = methodToExecute;
             this.canMethodBeExecuted = canMethodBeExecuted;
@@ -30,13 +30,13 @@ namespace Business_System_Laboration_4
 
         public bool CanExecute(object parameter)
         {
-            if (this.canMethodBeExecuted == null)
+            if (parameter != null && parameter is T typedParameter)
             {
-                return true;
+                return this.canMethodBeExecuted(typedParameter);
             }
             else
             {
-                return this.canMethodBeExecuted();
+                return false;
             }
         }
 
@@ -53,7 +53,6 @@ namespace Business_System_Laboration_4
 
         public event EventHandler CanExecuteChanged;
 
-        // Constructor for method without parameter
         public Command(Action methodToExecute, Func<bool> canMethodBeExecuted)
         {
             this.methodToExecute = methodToExecute;

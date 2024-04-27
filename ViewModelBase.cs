@@ -1,34 +1,35 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
 
 namespace Business_System_Laboration_4
 {
     public class ViewModelBase : INotifyPropertyChanged
     {
-
+        private ShoppingCart _cart;
+        private ProductHandler _prodHandler;
         private readonly string filePath = "produkter.csv";
 
-        public CheckoutViewModel CheckoutViewModel { get; }
-        public StockViewModel StockViewModel { get; }
+        public Command ConfirmPurchase { get; private set; }
+        public Command<Product> AddItemToCart { get; private set; }
+        public Command<Product> RemoveItemFromCart { get; private set; }
+        public Command<Product> IncreaseItemInCart { get; private set; }
+        public Command<Product> DecreaseItemInCart { get; private set; }
 
-        private ObservableCollection<Book> _books;
-        public ObservableCollection<Book> Books { get { return _books; } set { _books = value; OnPropertyChanged(nameof(Books)); } }
 
-        private ObservableCollection<Movie> _movies;
-        public ObservableCollection<Movie> Movies { get { return _movies; } set { _movies = value; OnPropertyChanged(nameof(Movies)); } }
-
-        private ObservableCollection<VideoGame> _videoGames;
-        public ObservableCollection<VideoGame> VideoGames { get { return _videoGames; } set { _videoGames = value; OnPropertyChanged(nameof(VideoGames)); } }
+      
+        public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
+        public ProductHandler ProdHandler { get { return _prodHandler; } set { if (_prodHandler != value) { _prodHandler = value; OnPropertyChanged(nameof(ProdHandler)); } } }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ViewModelBase()
         {
-            CheckoutViewModel = new CheckoutViewModel();
-            StockViewModel = new StockViewModel();
-            _books = new ObservableCollection<Book>();
-            _movies = new ObservableCollection<Movie>();
-            _videoGames=new ObservableCollection<VideoGame>();
+            ConfirmPurchase = new Command(Checkout, CanPurchase);
+            AddItemToCart = new Command<Product>(AddToCart, CanAddToCart);
+            RemoveItemFromCart = new Command<Product>(RemoveFromCart, CanRemoveFromCart);
+
+            _cart = new ShoppingCart();
+            _cart.PropertyChanged += ProductPropertyChanged;
+            _prodHandler = new ProductHandler();
         }
 
         public void LoadProducts()
@@ -42,15 +43,21 @@ namespace Business_System_Laboration_4
                     switch (productArray[0].First())
                     {
                         case 'B':
-                            Books.Add(AddBook(productArray));
+                            var book = ProdHandler.AddBook(productArray);
+                            book.PropertyChanged += ProductPropertyChanged;
+                            ProdHandler.Books.Add(book);
                             break;
 
                         case 'D':
-                            VideoGames.Add(AddVideoGame(productArray));
+                            var videoGame = ProdHandler.AddVideoGame(productArray);
+                            videoGame.PropertyChanged += ProductPropertyChanged;
+                            ProdHandler.VideoGames.Add(videoGame);
                             break;
 
                         case 'F':
-                            Movies.Add(AddMovie(productArray));
+                            var movie = ProdHandler.AddMovie(productArray);
+                            movie.PropertyChanged += ProductPropertyChanged;
+                            ProdHandler.Movies.Add(movie);
                             break;
 
                         default:
@@ -65,48 +72,65 @@ namespace Business_System_Laboration_4
 
         }
 
-        private Book AddBook(string[] productArray)
-        {
-            string id = productArray[0];
-            int.TryParse(productArray[1], out int amount);
-            float.TryParse(productArray[3], out float price);
-            string name = productArray[2];
-            string author = productArray[4];
-            string language = productArray[7];
-            Enum.TryParse(productArray[5], out Genre genre);
-            Enum.TryParse(productArray[6], out BookFormat format);
 
-            return new Book(id, amount, price, name, author, language, genre, format);
+        public void Checkout()
+        {
+            Cart.CheckoutCart();
         }
 
-        private Movie AddMovie(string[] productArray)
+        public void RemoveFromCart(Product product)
         {
-            string id = productArray[0];
-            int.TryParse(productArray[1], out int amount);
-            float.TryParse(productArray[3], out float price);
-            string name = productArray[2];
-            Enum.TryParse(productArray[6], out MovieFormatType format);
-            int.TryParse(productArray[9], out int playTime);
-
-            return new Movie(id, amount, price, name, format, playTime);
+            Cart.RemoveFromCart(product);
         }
 
-        private VideoGame AddVideoGame(string[] productArray)
+        public void AddToCart(Product product)
         {
-            string id = productArray[0];
-            int.TryParse(productArray[1], out int amount);
-            float.TryParse(productArray[3], out float price);
-            string name = productArray[2];
-            Enum.TryParse(productArray[8], out PlatformType format);
-
-            return new VideoGame(id, amount, price, name, format);
+            Cart.AddToCart(product);
         }
+
+        public bool CanPurchase()
+        {
+            if (Cart.IsCartEmpty())
+            {
+                return false;
+            }
+
+            else
+            {
+                return true;
+            }
+            
+        }
+
+        public static bool CanAddToCart(Product product)
+        {
+            if (product.Amount == 0)
+                return false;
+
+            else
+                return true;
+        }
+        public bool CanRemoveFromCart(Product product)
+        {
+            return product != null && Cart.CartItems.Contains(product);
+        }
+
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private void ProductPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Product.Amount) || e.PropertyName == nameof(ShoppingCart.CartItems))
+            {
+                ConfirmPurchase.RaiseCanExecuteChanged();
+                AddItemToCart.RaiseCanExecuteChanged();
+                RemoveItemFromCart.RaiseCanExecuteChanged();
             }
         }
     }
