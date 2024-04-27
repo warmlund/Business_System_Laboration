@@ -36,27 +36,58 @@
         <Setter Property="Width" Value="75"/>
         <Setter Property="Height" Value="25"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="10"/>
-        <Setter Property="Foreground" Value="#F5F9F9"/>
         <Setter Property="Background" Value="#8FB2B4"/>
         <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="ToolTip" Value="Lägg till vara"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="Button" Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    CornerRadius="10">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="10">
+                        <Label x:Name="PriceTextBlock" Content="{TemplateBinding Content}" ContentStringFormat=" {0:C}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Button" Property="Background" Value="#7bae45"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="Button" Property="Background" Value="#ebf1f1"/>
+                            <Setter TargetName="Button" Property="Background" Value="#d8e3e3"/>
+                            <Setter TargetName="PriceTextBlock" Property="Content" Value="Slutsåld"/>
+                            <Setter TargetName="PriceTextBlock" Property="Foreground" Value="#A0A0A0"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter TargetName="PriceTextBlock" Property="Foreground" Value="#F5F9F9"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RemoveButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="Black"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#170e39"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="ToolTip" Value="Ta bort vara"/>
+        <Setter Property="Command" Value="{Binding DataContext.RemoveItemFromCart, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Button" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                        <Label x:Name="RemoveTextBlock" Content="X" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Foreground="#170e39"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="RemoveTextBlock" Property="Foreground" Value="#CD4954"/>
+                            <Setter TargetName="Button" Property="BorderBrush" Value="#CD4954"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -150,14 +181,55 @@
     <Style x:Key="ListBoxStyle" TargetType="{x:Type ListBox}">
         <Setter Property="Background" Value="#F5F9F9"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="ItemContainerStyle" Value="{DynamicResource ListBoxItemContainer}"/>
     </Style>
+
+    <Style x:Key="ListBoxItemContainer" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="Transparent"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="Transparent"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="Transparent"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="Transparent"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="Transparent"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="Transparent"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--#endregion-->
 
+    <!--#region TextStyles -->
     <Style x:Key="TextTitleStyles" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Foreground" Value="#170e39"/>
         <Setter Property="FontFamily" Value="Consolas"/>
     </Style>
+    <!--#endregion-->
 </ResourceDictionary>
