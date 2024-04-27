@@ -75,7 +75,7 @@
                             <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Författare" IsReadOnly="True" Width="*" Binding="{Binding Author}"/>
                             <DataGridTextColumn  Header="Genre" IsReadOnly="True" Width="*" Binding="{Binding Genre}"/>
-                            <DataGridTextColumn  Header="Format" IsReadOnly="True" Width="*" Binding="{Binding BookFormat}"/>
+                            <DataGridTextColumn  Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                             <DataGridTextColumn  Header="Språk" IsReadOnly="True" Width="*" Binding="{Binding Language}"/>
                         </DataGrid.Columns>
                     </DataGrid>
@@ -90,7 +90,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Plattform" IsReadOnly="True" Width="*" Binding="{Binding Platform}"/>
+                            <DataGridTextColumn Header="Plattform" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -104,8 +104,8 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
-                            <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding VideoFormat}"/>
-                            <DataGridTextColumn Header="Speltid" IsReadOnly="True" Width="*" Binding="{Binding PlayTime}"/>
+                            <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
+                            <DataGridTextColumn Header="Speltid (min.)" IsReadOnly="True" Width="*" Binding="{Binding PlayTime}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>

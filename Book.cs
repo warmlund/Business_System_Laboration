@@ -1,4 +1,6 @@
-﻿namespace Business_System_Laboration_4
+﻿using System.ComponentModel;
+
+namespace Business_System_Laboration_4
 {
     public class Book : Product
     {
@@ -11,13 +13,21 @@
         public string Language { get { return _language; } set { _language = value; OnPropertyChanged(nameof(Language)); } }
         public Genre Genre { get { return _genre; } set { _genre = value; OnPropertyChanged(nameof(Genre)); } }
         public BookFormat BookFormat { get { return _bookFormat; } set { _bookFormat = value; OnPropertyChanged(nameof(BookFormat)); } }
+        public string FormatDescription { get { return GetDescription(_bookFormat); } set { OnPropertyChanged(nameof(BookFormat)); } }
 
-        public Book(string id, int amount, float price, string name, string author, string language, Genre genre, BookFormat bookFormat) : base(id, amount, price, name)
+    public Book(string id, int amount, float price, string name, string author, string language, Genre genre, BookFormat bookFormat) : base(id, amount, price, name)
         {
             _author = author;
             _language = language;
             _genre = genre;
             _bookFormat = bookFormat;
+        }
+
+        public static string GetDescription(BookFormat value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+            return attribute == null ? value.ToString() : attribute.Description;
         }
     }
 
