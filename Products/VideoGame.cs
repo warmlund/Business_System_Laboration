@@ -5,9 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
-using Business_System_Laboration_4.enums;
 
-namespace Business_System_Laboration_4.Products
+namespace Business_System_Laboration_4
 {
     public class VideoGame : Product
     {

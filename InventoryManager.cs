@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using Business_System_Laboration_4.BaseClasses;
-using Business_System_Laboration_4.Products;
 
 namespace Business_System_Laboration_4
 {

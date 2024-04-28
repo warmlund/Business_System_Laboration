@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
-using Business_System_Laboration_4.BaseClasses;
 
-namespace Business_System_Laboration_4.Products
+namespace Business_System_Laboration_4
 {
     public abstract class Product : NotifyPropertyChangedBase
     {

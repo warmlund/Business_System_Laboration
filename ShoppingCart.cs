@@ -2,8 +2,6 @@
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
-using Business_System_Laboration_4.BaseClasses;
-using Business_System_Laboration_4.Products;
 
 namespace Business_System_Laboration_4
 {
