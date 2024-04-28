@@ -23,11 +23,17 @@ namespace Business_System_Laboration_4
         {
             if (d is Window window)
             {
-                window.Closing += (s, e) =>
+                window.Loaded += (s, e) =>
                 {
                     if (window.DataContext is ViewModelBase viewModel)
                     {
-                        viewModel.SaveProducts();
+
+                        window.Closing += (s, e) =>
+                {
+                    viewModel.Cart.ReturnItemsToStock();
+                    viewModel.SaveProducts();
+
+                };
                     }
                 };
             }

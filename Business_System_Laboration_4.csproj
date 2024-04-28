@@ -13,9 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="produkter.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="produkter.csv">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

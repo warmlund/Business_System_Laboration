@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.IO;
+using System.Reflection;
+using System.Web;
 
 namespace Business_System_Laboration_4
 {
@@ -7,7 +9,10 @@ namespace Business_System_Laboration_4
     {
         private ShoppingCart _cart;
         private ProductHandler _prodHandler;
-        private readonly string filePath = "produkter.csv";
+        private readonly string fileName = "produkter.csv";
+        private string directory = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+        private string filePath;
+
 
         public Command ConfirmPurchase { get; private set; }
         public Command<Product> AddItemToCart { get; private set; }
@@ -15,8 +20,6 @@ namespace Business_System_Laboration_4
         public Command<Product> IncreaseItemInCart { get; private set; }
         public Command<Product> DecreaseItemInCart { get; private set; }
 
-
-      
         public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
         public ProductHandler ProdHandler { get { return _prodHandler; } set { if (_prodHandler != value) { _prodHandler = value; OnPropertyChanged(nameof(ProdHandler)); } } }
 
@@ -30,31 +33,33 @@ namespace Business_System_Laboration_4
             _cart = new ShoppingCart();
             _cart.PropertyChanged += ProductPropertyChanged;
             _prodHandler = new ProductHandler();
+            filePath = Path.Combine(directory, fileName);
         }
 
         public void LoadProducts()
         {
+
             using (StreamReader reader = new(filePath))
             {
                 while (!reader.EndOfStream)
                 {
                     var productArray = reader.ReadLine().Split(",");
 
-                    switch (productArray[0].First())
+                    switch (productArray.Last())
                     {
-                        case 'B':
+                        case "B":
                             var book = ProdHandler.AddBook(productArray);
                             book.PropertyChanged += ProductPropertyChanged;
                             ProdHandler.Books.Add(book);
                             break;
 
-                        case 'D':
+                        case "D":
                             var videoGame = ProdHandler.AddVideoGame(productArray);
                             videoGame.PropertyChanged += ProductPropertyChanged;
                             ProdHandler.VideoGames.Add(videoGame);
                             break;
 
-                        case 'F':
+                        case "F":
                             var movie = ProdHandler.AddMovie(productArray);
                             movie.PropertyChanged += ProductPropertyChanged;
                             ProdHandler.Movies.Add(movie);
@@ -69,7 +74,26 @@ namespace Business_System_Laboration_4
 
         public void SaveProducts()
         {
+            var writer = new StreamWriter(filePath);
 
+            foreach (var book in ProdHandler.Books)
+            {
+                string line = $"{book.Id},{book.Amount},{book.Name},{book.Price},{book.Author},{book.Genre},{book.BookFormat},{book.Language},,,B";
+                writer.WriteLine(line);
+            }
+
+            foreach (var videoGame in ProdHandler.VideoGames)
+            {
+                string line = $"{videoGame.Id},{videoGame.Amount},{videoGame.Name},{videoGame.Price},,,,,{videoGame.Platform},,D";
+                writer.WriteLine(line);
+            }
+
+            foreach (var movie in ProdHandler.Movies)
+            {
+                string line = $"{movie.Id},{movie.Amount},{movie.Name},{movie.Price},,,{movie.VideoFormat},,,{movie.PlayTime},F";
+                writer.WriteLine(line);
+            }
+            writer.Close();
         }
 
 
@@ -99,7 +123,7 @@ namespace Business_System_Laboration_4
             {
                 return true;
             }
-            
+
         }
 
         public static bool CanAddToCart(Product product)

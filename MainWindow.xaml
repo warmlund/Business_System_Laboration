@@ -85,7 +85,7 @@
                             <DataGridTemplateColumn Header="">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding Price}" Language="sv-SE" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Button Content="{Binding Price}" Command="{Binding DataContext.AddItemToCart, RelativeSource={RelativeSource AncestorType=DataGrid}}" Language="sv-SE" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -99,7 +99,7 @@
                             <DataGridTemplateColumn Header="">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Content="{Binding Price}" Command="{Binding DataContext.AddItemToCart, RelativeSource={RelativeSource AncestorType=DataGrid}}" Language="sv-SE" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Button Content="{Binding Price}" Command="{Binding DataContext.AddItemToCart, RelativeSource={RelativeSource AncestorType=DataGrid}}" Language="sv-SE" CommandParameter="{Binding}" Style="{StaticResource PurchaseButtonStyle}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
