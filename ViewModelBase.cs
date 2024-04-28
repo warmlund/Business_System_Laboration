@@ -1,102 +1,42 @@
-﻿using System.ComponentModel;
-using System.IO;
-using System.Reflection;
-using System.Web;
+﻿using Business_System_Laboration_4.BaseClasses;
+using Business_System_Laboration_4.Products;
+using System.ComponentModel;
 
 namespace Business_System_Laboration_4
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : NotifyPropertyChangedBase
     {
         private ShoppingCart _cart;
+        private InventoryManager _inventoryManager;
         private ProductHandler _prodHandler;
-        private readonly string fileName = "produkter.csv";
-        private string directory = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
-        private string filePath;
-
 
         public Command ConfirmPurchase { get; private set; }
         public Command<Product> AddItemToCart { get; private set; }
         public Command<Product> RemoveItemFromCart { get; private set; }
-        public Command<Product> IncreaseItemInCart { get; private set; }
-        public Command<Product> DecreaseItemInCart { get; private set; }
+        public Command AddProduct { get; private set; }
+        public Command<Product> RemoveProduct { get; private set; }
+        public Command HandleDelivery { get; private set; }
 
+        public InventoryManager Inventory { get { return _inventoryManager; } set { if (_inventoryManager != value) { _inventoryManager = value; OnPropertyChanged(nameof(Inventory)); } } }
         public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
         public ProductHandler ProdHandler { get { return _prodHandler; } set { if (_prodHandler != value) { _prodHandler = value; OnPropertyChanged(nameof(ProdHandler)); } } }
 
-        public event PropertyChangedEventHandler PropertyChanged;
         public ViewModelBase()
         {
             ConfirmPurchase = new Command(Checkout, CanPurchase);
             AddItemToCart = new Command<Product>(AddToCart, CanAddToCart);
             RemoveItemFromCart = new Command<Product>(RemoveFromCart, CanRemoveFromCart);
+            AddProduct = new Command(AddNewProduct, CanAddProduct);
+            RemoveProduct = new Command<Product>(RemoveSelectedProduct, CanRemoveSelectedProduct);
+            HandleDelivery = new Command(CreateNewDelivery, CanCreateNewDelivery);
 
             _cart = new ShoppingCart();
             _cart.PropertyChanged += ProductPropertyChanged;
+            _inventoryManager = new InventoryManager();
             _prodHandler = new ProductHandler();
-            filePath = Path.Combine(directory, fileName);
         }
 
-        public void LoadProducts()
-        {
-
-            using (StreamReader reader = new(filePath))
-            {
-                while (!reader.EndOfStream)
-                {
-                    var productArray = reader.ReadLine().Split(",");
-
-                    switch (productArray.Last())
-                    {
-                        case "B":
-                            var book = ProdHandler.AddBook(productArray);
-                            book.PropertyChanged += ProductPropertyChanged;
-                            ProdHandler.Books.Add(book);
-                            break;
-
-                        case "D":
-                            var videoGame = ProdHandler.AddVideoGame(productArray);
-                            videoGame.PropertyChanged += ProductPropertyChanged;
-                            ProdHandler.VideoGames.Add(videoGame);
-                            break;
-
-                        case "F":
-                            var movie = ProdHandler.AddMovie(productArray);
-                            movie.PropertyChanged += ProductPropertyChanged;
-                            ProdHandler.Movies.Add(movie);
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-            }
-        }
-
-        public void SaveProducts()
-        {
-            var writer = new StreamWriter(filePath);
-
-            foreach (var book in ProdHandler.Books)
-            {
-                string line = $"{book.Id},{book.Amount},{book.Name},{book.Price},{book.Author},{book.Genre},{book.BookFormat},{book.Language},,,B";
-                writer.WriteLine(line);
-            }
-
-            foreach (var videoGame in ProdHandler.VideoGames)
-            {
-                string line = $"{videoGame.Id},{videoGame.Amount},{videoGame.Name},{videoGame.Price},,,,,{videoGame.Platform},,D";
-                writer.WriteLine(line);
-            }
-
-            foreach (var movie in ProdHandler.Movies)
-            {
-                string line = $"{movie.Id},{movie.Amount},{movie.Name},{movie.Price},,,{movie.VideoFormat},,,{movie.PlayTime},F";
-                writer.WriteLine(line);
-            }
-            writer.Close();
-        }
-
-
+        #region Shoppingcart
         public void Checkout()
         {
             Cart.CheckoutCart();
@@ -138,17 +78,44 @@ namespace Business_System_Laboration_4
         {
             return product != null && Cart.CartItems.Contains(product);
         }
+        #endregion ShoppingCart
 
+        #region Inventory
 
-        protected virtual void OnPropertyChanged(string propertyName)
+        public void AddNewProduct()
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            return;
         }
 
-        private void ProductPropertyChanged(object sender, PropertyChangedEventArgs e)
+        public bool CanAddProduct()
+        {
+            return true;
+        }
+
+        public void RemoveSelectedProduct(Product product)
+        {
+
+        }
+
+        public bool CanRemoveSelectedProduct(Product product)
+        {
+            return true;
+        }
+
+        private bool CanCreateNewDelivery()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CreateNewDelivery()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        #endregion
+
+        internal void ProductPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(Product.Amount) || e.PropertyName == nameof(ShoppingCart.CartItems))
             {

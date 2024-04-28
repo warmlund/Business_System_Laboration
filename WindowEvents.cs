@@ -31,7 +31,7 @@ namespace Business_System_Laboration_4
                         window.Closing += (s, e) =>
                 {
                     viewModel.Cart.ReturnItemsToStock();
-                    viewModel.SaveProducts();
+                    viewModel.ProdHandler.SaveProducts();
 
                 };
                     }
@@ -62,7 +62,7 @@ namespace Business_System_Laboration_4
                 {
                     if (window.DataContext is ViewModelBase viewModel)
                     {
-                        viewModel.LoadProducts();
+                        viewModel.ProdHandler.LoadProducts(viewModel);
                     }
                 };
             }
