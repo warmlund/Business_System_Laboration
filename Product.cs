@@ -28,19 +28,17 @@ namespace Business_System_Laboration_4
             _cartQuantity = 0;
         }
 
-        public void DecreaseStock()
+        public void DecreaseStock(int amount)
         {
             if (Amount > 0)
             {
-                Amount -= 1;
+                Amount -= amount;
             }
-            //OnPropertyChanged(nameof(CanAddToCart));
         }
 
-        public void IncreaseStock()
+        public void IncreaseStock(int amount)
         {
-            Amount+=1;
-            //OnPropertyChanged(nameof(CanAddToCart));
+            Amount+=amount;
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

@@ -1,16 +1,15 @@
-Id,Antal,Namn,Pris,Författare,Genre,Format,Språk,Plattform,Speltid
-B1,1,Bello Gallico et Civili,449,Julius Caesar,Historia,Inbunden,Latin,,
-B2,2,How to Read a Book,149,Mortimer J. Adler,Kurslitteratur,Pocket,,,
-B3,5,Moby Dick,49,Herman Melville,Äventyr,Pocket,,,
-B4,7,Great Gatsby,79,F. Scott Fitzgerald,Noir,E_Bok,,,
-B5,3,House of Leaves,49,Mark Z. Danielewski,Skräck,,,,
-D1,10,Elden Ring,599,,,,,Playstation_5,
-D2,6,Demon's Souls,499,,,,,Playstation_5,
-D3,2,Mircrosoft Flight Simulator,499,,,,,PC,
-D4,6,Planescape Torment,99,,,,,PC,
-D5,9,Disco Elysium,399,,,,,PC,
-F1,3,Nyckeln till frihet,99,,,DVD,,,142
-F2,6,Gudfadern,99,,,DVD,,,152
-F3,3,Konungens återkomst,199,,,Blu_Ray,,,154
-F4,7,Pulp Fiction,199,,,Blu_Ray,,,
-F5,3,Schindlers list,99,,,DVD,,,
+1,1,Bello Gallico et Civili,449,Julius Caesar,Historia,Inbunden,Latin,,,B
+2,2,How to Read a Book,149,Mortimer J. Adler,Kurslitteratur,Pocket,,,,B
+3,5,Moby Dick,49,Herman Melville,Äventyr,Pocket,,,,B
+4,7,Great Gatsby,79,F. Scott Fitzgerald,Noir,Pocket,,,,B
+5,3,House of Leaves,49,Mark Z. Danielewski,Skräck,Pocket,,,,B
+6,10,Elden Ring,599,,,,,PC,,D
+7,5,Demon's Souls,499,,,,,PC,,D
+8,2,Mircrosoft Flight Simulator,499,,,,,PC,,D
+9,6,Planescape Torment,99,,,,,PC,,D
+10,9,Disco Elysium,399,,,,,PC,,D
+11,3,Nyckeln till frihet,99,,,DVD,,,142,F
+12,6,Gudfadern,99,,,DVD,,,152,F
+13,3,Konungens återkomst,199,,,DVD,,,154,F
+14,7,Pulp Fiction,199,,,DVD,,,,F
+15,3,Schindlers list,99,,,DVD,,,,F
