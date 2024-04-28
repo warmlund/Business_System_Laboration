@@ -10,8 +10,9 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="Foreground" Value="#F5F9F9"/>
-        <Setter Property="Background" Value="#8FB2B4"/>
+        <Setter Property="Background" Value="#80a0a2"/>
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Template">
             <Setter.Value>
@@ -26,6 +27,9 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Button" Property="Background" Value="#EDAB2C"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Button" Property="Background" Value="#a5c1c3"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -37,7 +41,8 @@
         <Setter Property="Height" Value="25"/>
         <Setter Property="Margin" Value="10,0,0,0"/>
         <Setter Property="FontSize" Value="10"/>
-        <Setter Property="Background" Value="#8FB2B4"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Background" Value="#80a0a2"/>
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="ToolTip" Value="Lägg till vara"/>
         <Setter Property="Template">
@@ -156,6 +161,8 @@
     <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
+
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="BorderBrush" Value="Transparent"/>
@@ -168,12 +175,31 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <Style x:Key="DataGridNumberCellStyle" TargetType="DataGridCell">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="#170e39"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="False">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="DataGridHeaderStyle" TargetType="DataGridColumnHeader">
         <Setter Property="Height" Value="30"/>
         <Setter Property="Background" Value="#F5F9F9" />
         <Setter Property="Foreground" Value="#170e39"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
     </Style>
     <!--#endregion-->
 

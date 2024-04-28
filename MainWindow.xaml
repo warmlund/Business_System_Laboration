@@ -72,7 +72,7 @@
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
 
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Författare" IsReadOnly="True" Width="*" Binding="{Binding Author}"/>
                             <DataGridTextColumn  Header="Genre" IsReadOnly="True" Width="*" Binding="{Binding Genre}"/>
                             <DataGridTextColumn  Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
@@ -89,7 +89,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Plattform" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                         </DataGrid.Columns>
                     </DataGrid>
@@ -103,7 +103,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="*" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                             <DataGridTextColumn Header="Speltid (min.)" IsReadOnly="True" Width="*" Binding="{Binding PlayTime}"/>
                         </DataGrid.Columns>
@@ -130,65 +130,43 @@
                         <Button Content="Lägg till leverans" Style="{StaticResource ButtonStyle}"/>
                     </StackPanel>
 
-                    <TextBlock Grid.Row="1" Text="Böcker" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                    <TextBlock Grid.Row="3" Text="Dataspel" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                    <TextBlock Grid.Row="5" Text="Filmer" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Grid.Row="1" Text="Böcker" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource TextTitleStyles}"/>
+                    <TextBlock Grid.Row="3" Text="Dataspel" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource TextTitleStyles}"/>
+                    <TextBlock Grid.Row="5" Text="Filmer" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource TextTitleStyles}"/>
 
-                    <DataGrid Grid.Row="2" Margin="10,0,10,10" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="2" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Books, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn CanUserResize="False" Width="Auto">
-                                <DataGridCheckBoxColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <CheckBox/>
-                                    </DataTemplate>
-                                </DataGridCheckBoxColumn.HeaderTemplate>
-                            </DataGridCheckBoxColumn>
-
-                            <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="Auto"/>
-                            <DataGridTemplateColumn Header="Antal" IsReadOnly="True" Width="Auto"/>
-                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Pris" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Författare" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Genre" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Format" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Språk" IsReadOnly="True" Width="*"/>
+                            <DataGridTextColumn Header="Varunummer" IsReadOnly="False" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Författare" IsReadOnly="True" Width="*" Binding="{Binding Author}"/>
+                            <DataGridTextColumn Header="Genre" IsReadOnly="True" Width="*" Binding="{Binding Genre}"/>
+                            <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
+                            <DataGridTextColumn Header="Språk" IsReadOnly="True" Width="*" Binding="{Binding Language}"/>
                         </DataGrid.Columns>
                         
                     </DataGrid>
 
-                    <DataGrid Grid.Row="4" Margin="10,0,10,10" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="4" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.VideoGames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn CanUserResize="False" Width="Auto">
-                                <DataGridCheckBoxColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <CheckBox/>
-                                    </DataTemplate>
-                                </DataGridCheckBoxColumn.HeaderTemplate>
-                            </DataGridCheckBoxColumn>
-                            <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="Auto"/>
-                            <DataGridTemplateColumn Header="Antal" IsReadOnly="True" Width="Auto"/>
-                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Plattform" IsReadOnly="True" Width="*"/>
-                            
+                            <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Plattform" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
 
-                    <DataGrid Grid.Row="6" Margin="10,0,10,10" Style="{StaticResource DataGridStyle}">
+                    <DataGrid Grid.Row="6" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Movies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridCheckBoxColumn CanUserResize="False" Width="Auto">
-                                <DataGridCheckBoxColumn.HeaderTemplate>
-                                    <DataTemplate>
-                                        <CheckBox/>
-                                    </DataTemplate>
-                                </DataGridCheckBoxColumn.HeaderTemplate>
-                            </DataGridCheckBoxColumn>
-                            <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="Auto"/>
-                            <DataGridTemplateColumn Header="Antal" IsReadOnly="True" Width="Auto"/>
-                            <DataGridTemplateColumn Header="Namn" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Format" IsReadOnly="True" Width="*"/>
-                            <DataGridTemplateColumn Header="Speltid" IsReadOnly="True" Width="*"/>
-                            
+                            <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
+                            <DataGridTextColumn Header="Speltid" IsReadOnly="True" Width="*" Binding="{Binding PlayTime}"/>
                         </DataGrid.Columns>
                     </DataGrid>
 
