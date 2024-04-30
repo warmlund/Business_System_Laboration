@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Business_System_Laboration_4" 
         d:DataContext="{d:DesignInstance Type=local:ViewModelBase}"
         mc:Ignorable="d"
-        Height="900" Width="1440" WindowStartupLocation="CenterScreen" Background="#CD4954" Foreground="#F5F9F9" Title="Laboration 4" WindowStyle="ThreeDBorderWindow"  ResizeMode="NoResize" local:WindowEvents.EnableClosing="True" local:WindowEvents.EnableLoading="True">
+        Height="900" Width="1440" WindowStartupLocation="CenterScreen" Background="#CD4954" Foreground="#F5F9F9" BorderThickness="0" Title="Laboration 4" WindowStyle="ThreeDBorderWindow"  ResizeMode="NoResize" local:WindowEvents.EnableClosing="True" local:WindowEvents.EnableLoading="True">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -124,9 +124,9 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel x:Name="buttonStack" Grid.Row="0" Orientation="Horizontal">
-                        <Button Content="Lägg till produkt" Style="{StaticResource ButtonStyle}"/>
-                        <Button Content="Ta bort produkter" Style="{StaticResource ButtonStyle}"/>
-                        <Button Content="Lägg till leverans" Style="{StaticResource ButtonStyle}"/>
+                        <Button Content="Lägg till produkt" Style="{StaticResource ButtonStyle}" Command="{Binding AddProduct}"/>
+                        <Button Content="Ta bort produkter" Style="{StaticResource ButtonStyle}" Command="{Binding RemoveProduct}"/>
+                        <Button Content="Lägg till leverans" Style="{StaticResource ButtonStyle}" Command="{Binding HandleDelivery}"/>
                     </StackPanel>
 
                     <TextBlock Grid.Row="1" Text="Böcker" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource TextTitleStyles}"/>

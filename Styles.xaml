@@ -257,5 +257,47 @@
         <Setter Property="Foreground" Value="#170e39"/>
         <Setter Property="FontFamily" Value="Consolas"/>
     </Style>
+
+    <Style x:Key="RegularTextStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="#170e39"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
+    </Style>
     <!--#endregion-->
+
+    <!--#region Combobox -->
+    <Style x:Key="ComboItemStyle" TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground" Value="#170e39"/>
+        <Setter Property="Background" Value="#F5F9F9"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="AllowDrop" Value="True"/>
+    </Style>
+
+    <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground" Value="#170e39"/>
+        <Setter Property="Background" Value="#F5F9F9"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="IsEditable" Value="False"/>
+        <Setter Property="IsDropDownOpen" Value="False"/>
+        <Setter Property="AllowDrop" Value="True"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ComboItemStyle}"/>
+    </Style>
+    <!--#endregion-->
+
+
 </ResourceDictionary>
