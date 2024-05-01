@@ -1,0 +1,83 @@
+﻿<Window x:Class="Business_System_Laboration_4.AddProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Business_System_Laboration_4"
+        d:DataContext="{d:DesignInstance Type=local:AddProductViewModel}"
+        mc:Ignorable="d"
+        Title="Lägg till produkt" Height="500" Width="300" WindowStartupLocation="CenterScreen" SizeToContent="Height" WindowStyle="ToolWindow" ResizeMode="NoResize" Foreground="#170e39" Background="#F5F9F9" BorderThickness="0" local:WindowEvents.EnableAddProductClosing="True">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <TextBlock Text="Välj Produkttyp" Grid.Column="0" Grid.Row="1"  Margin="10,0,0,5" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource RegularTextStyle}"/>
+            <ComboBox Name="ProductTypeList" Margin="10,0,0,0" Grid.Row="1" Style="{StaticResource ComboBoxStyle}" HorizontalAlignment="Left" ItemsSource="{Binding ProductTypes}" SelectedValue="{Binding SelectedProductType, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="2">
+            <TextBlock Text="Antal" Width="Auto"  Margin="10,10,0,5" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource RegularTextStyle}"/>
+            <TextBox x:Name="Antalruta" Text="{Binding Amount, Mode=TwoWay}" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Margin="10,0,0,0" local:WindowEvents.EnableOnlyIntegersChanged="True" IsEnabled="{Binding IsProductTypeSelected}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="3">
+            <TextBlock Text="Pris" Width="Auto"  Margin="10,10,0,5" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource RegularTextStyle}"/>
+            <TextBox x:Name="Prisruta" Text="{Binding Price, Mode=TwoWay}" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Margin="10,0,0,0" local:WindowEvents.EnableOnlyNumericsChanged="True"  IsEnabled="{Binding IsProductTypeSelected}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="4">
+            <TextBlock Text="Namn" Width="Auto"  Margin="10,10,0,5" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource RegularTextStyle}"/>
+            <TextBox x:Name="Namnruta" Text="{Binding Name, Mode=TwoWay}" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Margin="10,0,0,0"  IsEnabled="{Binding IsProductTypeSelected}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="5">
+            <TextBlock Text="{Binding InformationTitleOne}" Width="Auto"  Margin="10,10,0,5" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource RegularTextStyle}"/>
+            <ComboBox x:Name="Inforuta3" Style="{StaticResource ComboBoxStyle}" ItemsSource="{Binding InformationOneList}" SelectedValue="{Binding SelectedFormat, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,0,0,0"  Visibility="{Binding ShowInformationOne, Converter={StaticResource BooleanVisibilityConverter}}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="6">
+            <TextBlock Text="{Binding InformationTitleTwo}" Width="Auto"  Margin="10,10,0,5" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource RegularTextStyle}"/>
+            <TextBox x:Name="Inforuta2" Text="{Binding InformationTwo, Mode=TwoWay}" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Margin="10,0,0,0"  Visibility="{Binding ShowInformationTextBoxTwo, Converter={StaticResource BooleanVisibilityConverter}}"/>
+            <ComboBox x:Name="Combobox2" Style="{StaticResource ComboBoxStyle}" ItemsSource="{Binding Genres}" SelectedValue="{Binding SelectedGenre, Mode=TwoWay}" HorizontalAlignment="Left" Margin="10,0,0,0"  Visibility="{Binding ShowInformationComboBoxTwo, Converter={StaticResource BooleanVisibilityConverter}}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="7">
+            <TextBlock Text="{Binding InformationTitleThree}" Width="Auto"  Margin="10,10,0,5" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource RegularTextStyle}"/>
+            <TextBox x:Name="Inforuta1" Text="{Binding InformationThree, Mode=TwoWay}"  Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Margin="10,0,0,0" Visibility="{Binding ShowInformationThree, Converter={StaticResource BooleanVisibilityConverter}}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="8">
+            <TextBlock Text="{Binding InformationTitleFour}" Width="Auto"  Margin="10,10,0,5" VerticalAlignment="Center" HorizontalAlignment="Left" Style="{StaticResource RegularTextStyle}"/>
+            <TextBox x:Name="Inforuta4"  Text="{Binding InformationFour, Mode=TwoWay}" Style="{StaticResource TextBoxStyle}" HorizontalAlignment="Left" Margin="10,0,0,0"  Visibility="{Binding ShowInformationFour, Converter={StaticResource BooleanVisibilityConverter}}"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="9" Grid.ColumnSpan="2"  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+            <Button x:Name="Add" Content="Lägg till" Command="{Binding ConfirmAddProduct}" Style="{StaticResource ButtonStyle}"/>
+            <Button x:Name="Abort" Content="Avbryt" Style="{StaticResource ButtonStyle}" Command="{Binding AbortAddProduct}"/>
+        </StackPanel>
+    </Grid>
+</Window>
