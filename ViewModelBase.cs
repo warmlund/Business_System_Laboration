@@ -11,14 +11,12 @@ namespace Business_System_Laboration_4
         private AddProductViewModel _productViewModel;
         private AddProductWindow _addProductWindow;
 
-
         public Command ConfirmPurchase { get; private set; }
         public Command<Product> AddItemToCart { get; private set; }
         public Command<Product> RemoveItemFromCart { get; private set; }
         public Command AddProduct { get; private set; }
         public Command<Product> RemoveProduct { get; private set; }
         public Command HandleDelivery { get; private set; }
-
         public InventoryManager Inventory { get { return _inventoryManager; } set { if (_inventoryManager != value) { _inventoryManager = value; OnPropertyChanged(nameof(Inventory)); } } }
         public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
         public ProductHandler ProdHandler { get { return _prodHandler; } set { if (_prodHandler != value) { _prodHandler = value; OnPropertyChanged(nameof(ProdHandler)); } } }
@@ -38,6 +36,9 @@ namespace Business_System_Laboration_4
             _cart.PropertyChanged += ProductPropertyChanged;
             _inventoryManager = new InventoryManager();
             _prodHandler = new ProductHandler();
+            _prodHandler.ModelBase = this;
+            _productViewModel = new AddProductViewModel(_prodHandler);
+            
         }
 
         #region Shoppingcart
@@ -88,7 +89,7 @@ namespace Business_System_Laboration_4
 
         public void AddNewProduct()
         {
-            _addProductWindow = new AddProductWindow();
+            _addProductWindow = new AddProductWindow(_productViewModel);
             _addProductWindow.ShowDialog();
         }
 

@@ -136,9 +136,9 @@
                     <DataGrid Grid.Row="2" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Books, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Varunummer" IsReadOnly="False" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" MinWidth="100" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" MinWidth="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Författare" IsReadOnly="True" Width="*" Binding="{Binding Author}"/>
                             <DataGridTextColumn Header="Genre" IsReadOnly="True" Width="*" Binding="{Binding Genre}"/>
                             <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
@@ -150,9 +150,9 @@
                     <DataGrid Grid.Row="4" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.VideoGames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" MinWidth="100" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" MinWidth="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Plattform" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                         </DataGrid.Columns>
                     </DataGrid>
@@ -161,9 +161,9 @@
                     <DataGrid Grid.Row="6" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Movies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" MinWidth="100" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" MinWidth="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                             <DataGridTextColumn Header="Speltid" IsReadOnly="True" Width="*" Binding="{Binding PlayTime}"/>
                         </DataGrid.Columns>

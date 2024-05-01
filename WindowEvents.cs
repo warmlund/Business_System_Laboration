@@ -1,14 +1,17 @@
-﻿using System.Windows;
+﻿using Business_System_Laboration_4.BaseClasses;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 
 namespace Business_System_Laboration_4
 {
     class WindowEvents
     {
-
-        #region dependencyproperty för closing
+        #region dependencyproperty för closing av huvudfönstret
         public static bool GetEnableClosing(DependencyObject obj)
         {
             return (bool)obj.GetValue(EnableClosingProperty);
@@ -29,12 +32,10 @@ namespace Business_System_Laboration_4
                 {
                     if (window.DataContext is ViewModelBase viewModel)
                     {
-
                         window.Closing += (s, e) =>
                 {
                     viewModel.Cart.ReturnItemsToStock();
                     viewModel.ProdHandler.SaveProducts();
-
                 };
                     }
                 };
@@ -42,8 +43,38 @@ namespace Business_System_Laboration_4
         }
 
         #endregion
+        #region dependencyproperty för closing av huvudfönstret
+        public static bool GetEnableAddProductClosing(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(EnableAddProductClosingProperty);
+        }
 
-        #region dependencyProperty för loading
+        public static void SetEnableAddProductClosing(DependencyObject obj, bool value)
+        {
+            obj.SetValue(EnableAddProductClosingProperty, value);
+        }
+
+        public static readonly DependencyProperty EnableAddProductClosingProperty = DependencyProperty.RegisterAttached(nameof(EnableAddProductClosingProperty), typeof(bool), typeof(WindowEvents), new PropertyMetadata(false, EnableAddProductClosingChanged));
+
+        private static void EnableAddProductClosingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is Window window)
+            {
+                window.Loaded += (s, e) =>
+                {
+                    if (window.DataContext is ICloseWindow vm)
+                    {
+                        vm.Close += () =>
+                        {
+                            window.Close();
+                        };
+                    }
+                };
+            }
+        }
+
+        #endregion
+        #region dependencyProperty för loading av huvudfönstret
         public static bool GetEnableLoading(DependencyObject obj)
         {
             return (bool)obj.GetValue(EnableLoadingProperty);
@@ -64,7 +95,7 @@ namespace Business_System_Laboration_4
                 {
                     if (window.DataContext is ViewModelBase viewModel)
                     {
-                        viewModel.ProdHandler.LoadProducts(viewModel);
+                        viewModel.ProdHandler.LoadProducts();
                     }
                 };
             }
@@ -72,7 +103,7 @@ namespace Business_System_Laboration_4
 
         #endregion
 
-        #region dependencyProperty för textbox som endast tillåter nummer och komma 
+        #region dependencyProperties för textboxes
         public static bool GetEnableOnlyNumbericsChanged(DependencyObject obj)
         {
             return (bool)obj.GetValue(EnableOnlyNumericsProperty);
@@ -134,6 +165,8 @@ namespace Business_System_Laboration_4
         }
 
         #endregion
+
+       
 
         private static void NumericInputPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
