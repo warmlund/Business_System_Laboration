@@ -1,10 +1,6 @@
-﻿using Business_System_Laboration_4.BaseClasses;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 
 
 namespace Business_System_Laboration_4
@@ -43,20 +39,21 @@ namespace Business_System_Laboration_4
         }
 
         #endregion
-        #region dependencyproperty för closing av huvudfönstret
-        public static bool GetEnableAddProductClosing(DependencyObject obj)
+
+        #region dependencyproperty för closing av dialogfönster
+        public static bool GetEnableDialogClosing(DependencyObject obj)
         {
-            return (bool)obj.GetValue(EnableAddProductClosingProperty);
+            return (bool)obj.GetValue(EnableDialogClosingProperty);
         }
 
-        public static void SetEnableAddProductClosing(DependencyObject obj, bool value)
+        public static void SetEnableDialogClosing(DependencyObject obj, bool value)
         {
-            obj.SetValue(EnableAddProductClosingProperty, value);
+            obj.SetValue(EnableDialogClosingProperty, value);
         }
 
-        public static readonly DependencyProperty EnableAddProductClosingProperty = DependencyProperty.RegisterAttached(nameof(EnableAddProductClosingProperty), typeof(bool), typeof(WindowEvents), new PropertyMetadata(false, EnableAddProductClosingChanged));
+        public static readonly DependencyProperty EnableDialogClosingProperty = DependencyProperty.RegisterAttached(nameof(EnableDialogClosingProperty), typeof(bool), typeof(WindowEvents), new PropertyMetadata(false, EnableDialogClosingChanged));
 
-        private static void EnableAddProductClosingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void EnableDialogClosingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is Window window)
             {
@@ -74,6 +71,7 @@ namespace Business_System_Laboration_4
         }
 
         #endregion
+
         #region dependencyProperty för loading av huvudfönstret
         public static bool GetEnableLoading(DependencyObject obj)
         {
@@ -166,7 +164,7 @@ namespace Business_System_Laboration_4
 
         #endregion
 
-       
+
 
         private static void NumericInputPreviewTextInput(object sender, TextCompositionEventArgs e)
         {

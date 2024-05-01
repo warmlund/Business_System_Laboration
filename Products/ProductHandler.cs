@@ -10,6 +10,7 @@ namespace Business_System_Laboration_4
         private readonly string _fileName = "produkter.csv";
         private readonly string _directory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
         private string _filePath;
+
         private ObservableCollection<Book> _books;
         public ObservableCollection<Book> Books { get { return _books; } set { if (_books != value) { _books = value; OnPropertyChanged(nameof(Books)); } } }
 
@@ -214,6 +215,33 @@ namespace Business_System_Laboration_4
             OnPropertyChanged(nameof(Books));
             OnPropertyChanged(nameof(Movies));
             OnPropertyChanged(nameof(VideoGames));
+        }
+
+        internal void RemoveProduct(Product selectedProduct)
+        {
+            try
+            {
+                if (selectedProduct is Book book)
+                {
+                    Books.Remove(book);
+                }
+
+                else if (selectedProduct is Movie movie)
+                {
+                    Movies.Remove(movie);
+                }
+
+                else if (selectedProduct is VideoGame game)
+                {
+                    VideoGames.Remove(game);
+                }
+            }
+
+            catch
+            {
+                MessageBox.Show("Fel", "Fel vid borttagande av produkt");
+            }
+
         }
     }
 }

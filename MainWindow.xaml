@@ -125,7 +125,7 @@
 
                     <StackPanel x:Name="buttonStack" Grid.Row="0" Orientation="Horizontal">
                         <Button Content="Lägg till produkt" Style="{StaticResource ButtonStyle}" Command="{Binding AddProduct}"/>
-                        <Button Content="Ta bort produkter" Style="{StaticResource ButtonStyle}" Command="{Binding RemoveProduct}"/>
+                        <Button Content="Ta bort produkt" Style="{StaticResource ButtonStyle}" Command="{Binding RemoveProduct}"/>
                         <Button Content="Lägg till leverans" Style="{StaticResource ButtonStyle}" Command="{Binding HandleDelivery}"/>
                     </StackPanel>
 

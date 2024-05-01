@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Business_System_Laboration_4"
         d:DataContext="{d:DesignInstance Type=local:AddProductViewModel}"
         mc:Ignorable="d"
-        Title="Lägg till produkt" Height="500" Width="300" WindowStartupLocation="CenterScreen" SizeToContent="Height" WindowStyle="ToolWindow" ResizeMode="NoResize" Foreground="#170e39" Background="#F5F9F9" BorderThickness="0" local:WindowEvents.EnableAddProductClosing="True">
+        Title="Lägg till produkt" Height="500" Width="300" WindowStartupLocation="CenterScreen" SizeToContent="Height" WindowStyle="ToolWindow" ResizeMode="NoResize" Foreground="#170e39" Background="#F5F9F9" BorderThickness="0" local:WindowEvents.EnableDialogClosing="True">
 
     <Window.Resources>
         <ResourceDictionary>

@@ -84,7 +84,7 @@ namespace Business_System_Laboration_4
 
         public void ReturnItemsToStock()
         {
-            if(CartItems.Count > 0)
+            if (CartItems.Count > 0)
             {
                 foreach (Product product in CartItems)
                 {

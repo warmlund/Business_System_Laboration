@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Business_System_Laboration_4
 {
@@ -10,12 +9,14 @@ namespace Business_System_Laboration_4
         private ProductHandler _prodHandler;
         private AddProductViewModel _productViewModel;
         private AddProductWindow _addProductWindow;
+        private RemoveProductViewModel _removeProductViewModel;
+        private RemoveProductWindow _removeProductWindow;
 
         public Command ConfirmPurchase { get; private set; }
         public Command<Product> AddItemToCart { get; private set; }
         public Command<Product> RemoveItemFromCart { get; private set; }
         public Command AddProduct { get; private set; }
-        public Command<Product> RemoveProduct { get; private set; }
+        public Command RemoveProduct { get; private set; }
         public Command HandleDelivery { get; private set; }
         public InventoryManager Inventory { get { return _inventoryManager; } set { if (_inventoryManager != value) { _inventoryManager = value; OnPropertyChanged(nameof(Inventory)); } } }
         public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
@@ -29,7 +30,7 @@ namespace Business_System_Laboration_4
             AddItemToCart = new Command<Product>(AddToCart, CanAddToCart);
             RemoveItemFromCart = new Command<Product>(RemoveFromCart, CanRemoveFromCart);
             AddProduct = new Command(AddNewProduct, CanAddProduct);
-            RemoveProduct = new Command<Product>(RemoveSelectedProduct, CanRemoveSelectedProduct);
+            RemoveProduct = new Command(RemoveSelectedProduct, CanRemoveProduct);
             HandleDelivery = new Command(CreateNewDelivery, CanCreateNewDelivery);
 
             _cart = new ShoppingCart();
@@ -38,7 +39,8 @@ namespace Business_System_Laboration_4
             _prodHandler = new ProductHandler();
             _prodHandler.ModelBase = this;
             _productViewModel = new AddProductViewModel(_prodHandler);
-            
+            _removeProductViewModel = new RemoveProductViewModel(_prodHandler);
+
         }
 
         #region Shoppingcart
@@ -98,12 +100,13 @@ namespace Business_System_Laboration_4
             return true;
         }
 
-        public void RemoveSelectedProduct(Product product)
+        public void RemoveSelectedProduct()
         {
-            return;
+            _removeProductWindow = new RemoveProductWindow(_removeProductViewModel);
+            _removeProductWindow.ShowDialog();
         }
 
-        public bool CanRemoveSelectedProduct(Product product)
+        public bool CanRemoveProduct()
         {
             return true;
         }
