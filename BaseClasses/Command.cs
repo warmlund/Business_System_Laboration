@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace Business_System_Laboration_4.BaseClasses
+namespace Business_System_Laboration_4
 {
     public class Command<T> : ICommand
     {

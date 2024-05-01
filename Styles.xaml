@@ -257,5 +257,78 @@
         <Setter Property="Foreground" Value="#170e39"/>
         <Setter Property="FontFamily" Value="Consolas"/>
     </Style>
+
+    <Style x:Key="RegularTextStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
+        <Setter Property="Foreground" Value="#170e39"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
+    </Style>
     <!--#endregion-->
+
+    <!--#region Combobox -->
+    <Style x:Key="ComboItemStyle" TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground" Value="#170e39"/>
+        <Setter Property="Background" Value="#F5F9F9"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="AllowDrop" Value="True"/>
+    </Style>
+
+    <Style x:Key="ComboBoxStyle" TargetType="{x:Type ComboBox}">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Margin" Value="10,0,0,0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground" Value="#170e39"/>
+        <Setter Property="Background" Value="#F5F9F9"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="IsEditable" Value="False"/>
+        <Setter Property="IsDropDownOpen" Value="False"/>
+        <Setter Property="AllowDrop" Value="True"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource ComboItemStyle}"/>
+    </Style>
+    <!--#endregion-->
+
+    <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Foreground" Value="#170e39"/>
+        <Setter Property="Background" Value="white"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="IsReadOnly" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Background="{TemplateBinding Background}" x:Name="Bd" BorderBrush="#80a0a2" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#d8e3e3" TargetName="Bd"/>
+                            <Setter Property="Foreground" Value="#80a0a2"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Background" Value="#FFFFFF" TargetName="Bd"/>
+                            <Setter Property="Foreground" Value="#170e39"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

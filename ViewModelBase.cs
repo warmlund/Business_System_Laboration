@@ -1,5 +1,4 @@
-﻿using Business_System_Laboration_4.BaseClasses;
-using Business_System_Laboration_4.Products;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace Business_System_Laboration_4
@@ -9,6 +8,8 @@ namespace Business_System_Laboration_4
         private ShoppingCart _cart;
         private InventoryManager _inventoryManager;
         private ProductHandler _prodHandler;
+        private AddProductViewModel _productViewModel;
+        private AddProductWindow _addProductWindow;
 
         public Command ConfirmPurchase { get; private set; }
         public Command<Product> AddItemToCart { get; private set; }
@@ -16,10 +17,11 @@ namespace Business_System_Laboration_4
         public Command AddProduct { get; private set; }
         public Command<Product> RemoveProduct { get; private set; }
         public Command HandleDelivery { get; private set; }
-
         public InventoryManager Inventory { get { return _inventoryManager; } set { if (_inventoryManager != value) { _inventoryManager = value; OnPropertyChanged(nameof(Inventory)); } } }
         public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
         public ProductHandler ProdHandler { get { return _prodHandler; } set { if (_prodHandler != value) { _prodHandler = value; OnPropertyChanged(nameof(ProdHandler)); } } }
+
+        public AddProductViewModel AddProductViewModel { get { return _productViewModel; } set { if (_productViewModel != value) { _productViewModel = value; OnPropertyChanged(nameof(AddProductViewModel)); } } }
 
         public ViewModelBase()
         {
@@ -34,6 +36,9 @@ namespace Business_System_Laboration_4
             _cart.PropertyChanged += ProductPropertyChanged;
             _inventoryManager = new InventoryManager();
             _prodHandler = new ProductHandler();
+            _prodHandler.ModelBase = this;
+            _productViewModel = new AddProductViewModel(_prodHandler);
+            
         }
 
         #region Shoppingcart
@@ -84,7 +89,8 @@ namespace Business_System_Laboration_4
 
         public void AddNewProduct()
         {
-            return;
+            _addProductWindow = new AddProductWindow(_productViewModel);
+            _addProductWindow.ShowDialog();
         }
 
         public bool CanAddProduct()
@@ -94,7 +100,7 @@ namespace Business_System_Laboration_4
 
         public void RemoveSelectedProduct(Product product)
         {
-
+            return;
         }
 
         public bool CanRemoveSelectedProduct(Product product)
@@ -104,12 +110,12 @@ namespace Business_System_Laboration_4
 
         private bool CanCreateNewDelivery()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         private void CreateNewDelivery()
         {
-            throw new NotImplementedException();
+            return;
         }
 
 

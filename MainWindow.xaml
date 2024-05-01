@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Business_System_Laboration_4" 
         d:DataContext="{d:DesignInstance Type=local:ViewModelBase}"
         mc:Ignorable="d"
-        Height="900" Width="1440" WindowStartupLocation="CenterScreen" Background="#CD4954" Foreground="#F5F9F9" Title="Laboration 4" WindowStyle="ThreeDBorderWindow"  ResizeMode="NoResize" local:WindowEvents.EnableClosing="True" local:WindowEvents.EnableLoading="True">
+        Height="900" Width="1440" WindowStartupLocation="CenterScreen" Background="#CD4954" Foreground="#F5F9F9" BorderThickness="0" Title="Laboration 4" WindowStyle="ThreeDBorderWindow"  ResizeMode="NoResize" local:WindowEvents.EnableClosing="True" local:WindowEvents.EnableLoading="True">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -124,9 +124,9 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel x:Name="buttonStack" Grid.Row="0" Orientation="Horizontal">
-                        <Button Content="Lägg till produkt" Style="{StaticResource ButtonStyle}"/>
-                        <Button Content="Ta bort produkter" Style="{StaticResource ButtonStyle}"/>
-                        <Button Content="Lägg till leverans" Style="{StaticResource ButtonStyle}"/>
+                        <Button Content="Lägg till produkt" Style="{StaticResource ButtonStyle}" Command="{Binding AddProduct}"/>
+                        <Button Content="Ta bort produkter" Style="{StaticResource ButtonStyle}" Command="{Binding RemoveProduct}"/>
+                        <Button Content="Lägg till leverans" Style="{StaticResource ButtonStyle}" Command="{Binding HandleDelivery}"/>
                     </StackPanel>
 
                     <TextBlock Grid.Row="1" Text="Böcker" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource TextTitleStyles}"/>
@@ -136,9 +136,9 @@
                     <DataGrid Grid.Row="2" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Books, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Varunummer" IsReadOnly="False" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" MinWidth="100" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" MinWidth="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Författare" IsReadOnly="True" Width="*" Binding="{Binding Author}"/>
                             <DataGridTextColumn Header="Genre" IsReadOnly="True" Width="*" Binding="{Binding Genre}"/>
                             <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
@@ -150,9 +150,9 @@
                     <DataGrid Grid.Row="4" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.VideoGames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" MinWidth="100" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" MinWidth="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Plattform" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                         </DataGrid.Columns>
                     </DataGrid>
@@ -161,9 +161,9 @@
                     <DataGrid Grid.Row="6" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Movies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Antal" IsReadOnly="True" Width="Auto" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
-                            <DataGridTextColumn Header="Pris" IsReadOnly="True" Width="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
-                            <DataGridTextColumn Header="Namn" IsReadOnly="True" Width="300" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Antal" IsReadOnly="True" MinWidth="100" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Pris" IsReadOnly="True" MinWidth="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
+                            <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="300" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Format" IsReadOnly="True" Width="*" Binding="{Binding FormatDescription}"/>
                             <DataGridTextColumn Header="Speltid" IsReadOnly="True" Width="*" Binding="{Binding PlayTime}"/>
                         </DataGrid.Columns>
