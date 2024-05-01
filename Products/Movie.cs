@@ -1,7 +1,4 @@
-﻿using Business_System_Laboration_4.BaseClasses;
-using System.ComponentModel;
-
-namespace Business_System_Laboration_4
+﻿namespace Business_System_Laboration_4
 {
     public class Movie : Product
     {
