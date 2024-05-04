@@ -1,0 +1,74 @@
+﻿<Window x:Class="Business_System_Laboration_4.LogDeliveryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Business_System_Laboration_4" 
+        d:DataContext="{d:DesignInstance Type=local:LogDeliveryViewModel}"
+        mc:Ignorable="d"
+        Title="Lägg till leverans" Height="600" Width="500" WindowStartupLocation="CenterScreen" SizeToContent="Height" WindowStyle="ToolWindow" ResizeMode="NoResize" Foreground="#170e39" Background="#F5F9F9" BorderThickness="0" local:WindowEvents.EnableDialogClosing="True">
+
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Margin="10,0,0,0" Width="300" Foreground="#170e39" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Text="Dubbelklicka på antalet under kolumn Antal för att uppdatera mängden i förhållande till aktuell leverans." FontSize="10" FontStyle="Italic" FontFamily="Cortana"/>
+        <DataGrid Grid.Row="1" Margin="10,0,10,10" ItemsSource="{Binding EditedBooks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                <DataGridTemplateColumn x:Name="BookAmount" Header="Antal" IsReadOnly="False"  MinWidth="100" CellStyle="{StaticResource DataGridEditAmountCellStyle}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" local:WindowEvents.EnableOnlyIntegersChanged="True" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="250" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Grid.Row="2" Margin="10,0,10,10" ItemsSource="{Binding EditedVideoGames, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                <DataGridTemplateColumn x:Name="GameAmount" Header="Antal" IsReadOnly="False"  MinWidth="100" CellStyle="{StaticResource DataGridEditAmountCellStyle}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" local:WindowEvents.EnableOnlyIntegersChanged="True" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="250" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Grid.Row="3" Margin="10,0,10,10" ItemsSource="{Binding EditedMovies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                <DataGridTemplateColumn x:Name="MovieAmount" Header="Antal" IsReadOnly="False"  MinWidth="100" CellStyle="{StaticResource DataGridEditAmountCellStyle}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Amount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" local:WindowEvents.EnableOnlyIntegersChanged="True" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="250" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+            <Button x:Name="Add" Content="Uppdatera" Command="{Binding ConfirmUpdateProduct}" Style="{StaticResource ButtonStyle}"/>
+            <Button x:Name="Abort" Content="Avbryt" Style="{StaticResource ButtonStyle}" Command="{Binding AbortUpdateProduct}"/>
+        </StackPanel>
+    </Grid>
+</Window>
