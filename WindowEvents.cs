@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace Business_System_Laboration_4
 {
-    class WindowEvents
+    public class WindowEvents
     {
         #region dependencyproperty för closing av huvudfönstret
         public static bool GetEnableClosing(DependencyObject obj)
@@ -132,6 +132,7 @@ namespace Business_System_Laboration_4
             }
         }
 
+
         public static bool GetEnableOnlyIntegersChanged(DependencyObject obj)
         {
             return (bool)obj.GetValue(EnableOnlyIntegersProperty);
@@ -163,8 +164,6 @@ namespace Business_System_Laboration_4
         }
 
         #endregion
-
-
 
         private static void NumericInputPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -248,6 +247,5 @@ namespace Business_System_Laboration_4
             }
             return true;
         }
-
     }
 }

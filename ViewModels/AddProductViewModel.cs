@@ -269,7 +269,7 @@ namespace Business_System_Laboration_4
         {
             if (SelectedProductType == _productTypes[1])
             {
-                if (int.TryParse(InformationTwo, out _))
+                if (int.TryParse(InformationTwo, out int number) && number > 0)
                     return true;
 
                 else

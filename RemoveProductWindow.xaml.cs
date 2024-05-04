@@ -11,7 +11,7 @@ namespace Business_System_Laboration_4
         {
             DataContext = viewModel;
             InitializeComponent();
-            
+
         }
     }
 }

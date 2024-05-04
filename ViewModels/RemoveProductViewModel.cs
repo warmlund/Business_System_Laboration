@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Business_System_Laboration_4
 {
@@ -38,7 +37,7 @@ namespace Business_System_Laboration_4
 
         private bool CanRemoveProduct()
         {
-            if (SelectedProduct!=null)
+            if (SelectedProduct != null)
                 return true;
 
             else
@@ -57,7 +56,7 @@ namespace Business_System_Laboration_4
                     Close?.Invoke();
                 }
 
-                if (message==MessageBoxResult.No)
+                if (message == MessageBoxResult.No)
                 {
                     Close?.Invoke();
                 }
