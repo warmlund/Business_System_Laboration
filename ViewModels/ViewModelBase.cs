@@ -11,6 +11,8 @@ namespace Business_System_Laboration_4
         private AddProductWindow _addProductWindow;
         private RemoveProductViewModel _removeProductViewModel;
         private RemoveProductWindow _removeProductWindow;
+        private LogDeliveryViewModel _logDeliveryViewModel;
+        private LogDeliveryWindow _logDeliveryWindow;
 
         public Command ConfirmPurchase { get; private set; }
         public Command<Product> AddItemToCart { get; private set; }
@@ -21,8 +23,6 @@ namespace Business_System_Laboration_4
         public InventoryManager Inventory { get { return _inventoryManager; } set { if (_inventoryManager != value) { _inventoryManager = value; OnPropertyChanged(nameof(Inventory)); } } }
         public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
         public ProductHandler ProdHandler { get { return _prodHandler; } set { if (_prodHandler != value) { _prodHandler = value; OnPropertyChanged(nameof(ProdHandler)); } } }
-
-        public AddProductViewModel AddProductViewModel { get { return _productViewModel; } set { if (_productViewModel != value) { _productViewModel = value; OnPropertyChanged(nameof(AddProductViewModel)); } } }
 
         public ViewModelBase()
         {
@@ -38,8 +38,7 @@ namespace Business_System_Laboration_4
             _inventoryManager = new InventoryManager();
             _prodHandler = new ProductHandler();
             _prodHandler.ModelBase = this;
-            _productViewModel = new AddProductViewModel(_prodHandler);
-            _removeProductViewModel = new RemoveProductViewModel(_prodHandler);
+
 
         }
 
@@ -91,34 +90,39 @@ namespace Business_System_Laboration_4
 
         public void AddNewProduct()
         {
+            _productViewModel = new AddProductViewModel(_prodHandler);
             _addProductWindow = new AddProductWindow(_productViewModel);
             _addProductWindow.ShowDialog();
         }
 
-        public bool CanAddProduct()
+        public static bool CanAddProduct()
         {
             return true;
         }
 
         public void RemoveSelectedProduct()
         {
+            _removeProductViewModel = new RemoveProductViewModel(_prodHandler);
             _removeProductWindow = new RemoveProductWindow(_removeProductViewModel);
             _removeProductWindow.ShowDialog();
         }
 
-        public bool CanRemoveProduct()
-        {
-            return true;
-        }
-
-        private bool CanCreateNewDelivery()
+        public static bool CanRemoveProduct()
         {
             return true;
         }
 
         private void CreateNewDelivery()
         {
-            return;
+            _logDeliveryViewModel = new LogDeliveryViewModel(_prodHandler);
+            _logDeliveryWindow = new LogDeliveryWindow(_logDeliveryViewModel);
+            _logDeliveryWindow.ShowDialog();
+        }
+
+
+        private bool CanCreateNewDelivery()
+        {
+            return true;
         }
 
 

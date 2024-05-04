@@ -135,7 +135,7 @@
 
                     <DataGrid Grid.Row="2" Margin="10,0,10,10" ItemsSource="{Binding Path=ProdHandler.Books, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Varunummer" IsReadOnly="False" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
+                            <DataGridTextColumn Header="Varunummer" IsReadOnly="True" CanUserResize="False" Width="Auto" Binding="{Binding Id}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
                             <DataGridTextColumn Header="Antal" IsReadOnly="True" MinWidth="100" Binding="{Binding Amount}" CellStyle="{StaticResource DataGridNumberCellStyle}"/>
                             <DataGridTextColumn Header="Pris" IsReadOnly="True" MinWidth="100" Binding="{Binding Price, StringFormat={}{0:C}, ConverterCulture=sv-SE}"/>
                             <DataGridTextColumn Header="Namn" IsReadOnly="True" MinWidth="300" Binding="{Binding Name}"/>
