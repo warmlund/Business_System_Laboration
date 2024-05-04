@@ -4,7 +4,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-
+This is a C# WPF project developed during the course C# .NET at Karlstad University. It's a simple business system that reads a products from a csv file. The user can add products to a shopping cart and perform for example purchases and also do admin tasks such as adding new products, removing products and edit the stock amount of products. The project is using a MVVM pattern.
 
 
 
