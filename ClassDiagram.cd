@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Business_System_Laboration_4.Book" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAhCAAAAAAAgAIQABAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Products\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Business_System_Laboration_4.BooleanVisibilityConverter" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="29.25" Y="0.5" Width="1.5" />
+    <Position X="25.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BaseClasses\BooleanVisibilityConverter.cs</FileName>
@@ -9,171 +16,38 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Business_System_Laboration_4.Command" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.75" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAQAACAAQAAEAAgAAAAAAAAAAAAAAAAABEAAA=</HashCode>
-      <FileName>BaseClasses\Command.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Business_System_Laboration_4.Command&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="6" Y="1.25" Width="1.5" />
+    <Position X="27" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAACAAQAAEAAAAAAAAAAAAAAAAAAAABEAAA=</HashCode>
       <FileName>BaseClasses\Command.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Business_System_Laboration_4.Command&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAACAAQAAEAAgAAAAAAAAAAAAAAAAABEAAA=</HashCode>
+      <FileName>BaseClasses\Command.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
   <Class Name="Business_System_Laboration_4.EnumDescriptionExtractor&lt;TEnum&gt;" Collapsed="true">
-    <Position X="27.5" Y="1.5" Width="1.5" />
+    <Position X="25.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>BaseClasses\EnumDescriptionExtractor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Business_System_Laboration_4.NotifyPropertyChangedBase" Collapsed="true">
-    <Position X="12.75" Y="2.25" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>BaseClasses\NotifyPropertyChangedBase.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Business_System_Laboration_4.Book" Collapsed="true">
-    <Position X="3.75" Y="5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAQAAhCAAAAAAAgAIQABAAAAAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>Products\Book.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_bookFormat" />
-      <Field Name="_genre" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Business_System_Laboration_4.Movie" Collapsed="true">
-    <Position X="6.25" Y="5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAgAAAAAIQAAAAAIAAAAA=</HashCode>
-      <FileName>Products\Movie.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="movieFormat" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Business_System_Laboration_4.Product" Collapsed="true">
-    <Position X="3.75" Y="3.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AgACKAAAAQAAQAAAAIRAAASAAAAAAAAgAAAAAEAAAAA=</HashCode>
-      <FileName>Products\Product.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Business_System_Laboration_4.ProductHandler" Collapsed="true">
-    <Position X="11.25" Y="3.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>EADAAACoAAAQEAQBECAKEAAAwAAAABUAAAAAAAAAAAA=</HashCode>
-      <FileName>Products\ProductHandler.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Business_System_Laboration_4.VideoGame" Collapsed="true">
-    <Position X="1.25" Y="5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAACAQAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Products\VideoGame.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_platform" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Business_System_Laboration_4.AddProductViewModel" Collapsed="true">
-    <Position X="13.75" Y="3.5" Width="2" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>QgBAISBwAxJioAJ0CKIAAAzAgVBIw9ABCADEgEiYBDg=</HashCode>
-      <FileName>ViewModels\AddProductViewModel.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="AbortAddProduct" />
-      <Property Name="ConfirmAddProduct" />
-    </ShowAsAssociation>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="Business_System_Laboration_4.LogDeliveryViewModel" Collapsed="true">
-    <Position X="19" Y="3.5" Width="2" />
+    <Position X="15.25" Y="1.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAggAAAAAAQBBAAABBAgAACCAAAAAABAAIABAACgAAA=</HashCode>
       <FileName>ViewModels\LogDeliveryViewModel.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="AbortUpdateProduct" />
-      <Property Name="ConfirmUpdateProduct" />
-    </ShowAsAssociation>
     <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Business_System_Laboration_4.RemoveProductViewModel" Collapsed="true">
-    <Position X="24.25" Y="3.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>QAIUAAABAAAAAAAAAAAoQAAAAAAAAACAAAAAAACJAAA=</HashCode>
-      <FileName>ViewModels\RemoveProductViewModel.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="AbortRemoveProduct" />
-      <Property Name="ConfirmRemoveProduct" />
-    </ShowAsAssociation>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Business_System_Laboration_4.ViewModelBase" Collapsed="true">
-    <Position X="8.75" Y="3.5" Width="1.75" />
-    <Compartments>
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>YAgAAkBEAEAFBAACAAAIYAEChAAABAQ0EAAAAhAICCA=</HashCode>
-      <FileName>ViewModels\ViewModelBase.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_productViewModel" />
-      <Field Name="_addProductWindow" />
-      <Field Name="_logDeliveryWindow" />
-      <Field Name="_logDeliveryViewModel" />
-      <Field Name="_inventoryManager" />
-      <Field Name="_removeProductViewModel" />
-      <Field Name="_removeProductWindow" />
-      <Property Name="Cart" />
-      <Property Name="ProdHandler" />
-      <Property Name="AddItemToCart" />
-      <Property Name="AddProduct" />
-      <Property Name="ConfirmPurchase" />
-      <Property Name="HandleDelivery" />
-      <Property Name="RemoveItemFromCart" />
-      <Property Name="RemoveProduct" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Business_System_Laboration_4.AddProductWindow" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8.75" Y="6" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>AddProductWindow.xaml.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="Business_System_Laboration_4.App" Collapsed="true">
-    <Position X="27.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>App.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Business_System_Laboration_4.InventoryManager" Collapsed="true">
-    <Position X="21.75" Y="3.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAIQAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>InventoryManager.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="Business_System_Laboration_4.LogDeliveryWindow" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.75" Y="0.5" Width="1.75" />
+    <Position X="27" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>LogDeliveryWindow.xaml.cs</FileName>
@@ -181,18 +55,52 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Business_System_Laboration_4.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="6" Y="6.5" Width="1.5" />
+    <Position X="23.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="_viewModelBase" />
-    </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Business_System_Laboration_4.Movie" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAgAAAAAIQAAAAAIAAAAA=</HashCode>
+      <FileName>Products\Movie.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_System_Laboration_4.NotifyPropertyChangedBase" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseClasses\NotifyPropertyChangedBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Business_System_Laboration_4.Product" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AgACKAAAAQAAQAAAAIRAAASAAAAAAAAgAAAAAEAAAAA=</HashCode>
+      <FileName>Products\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_System_Laboration_4.ProductHandler" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EADAAACoAAAQEAQBECAKEAAAwAAAABUAAAAAAAAAAAA=</HashCode>
+      <FileName>Products\ProductHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_System_Laboration_4.RemoveProductViewModel" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAIUAAABAAAAAAAAAAAoQAAAAAAAAACAAAAAAACJAAA=</HashCode>
+      <FileName>ViewModels\RemoveProductViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Class Name="Business_System_Laboration_4.RemoveProductWindow" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="8.75" Y="1.5" Width="2" />
+    <Position X="25.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>RemoveProductWindow.xaml.cs</FileName>
@@ -200,49 +108,79 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Business_System_Laboration_4.ShoppingCart" Collapsed="true">
-    <Position X="16.5" Y="3.5" Width="1.75" />
+    <Position X="20.75" Y="1.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>EIAAAAAQgAAAAAAAAAAAAAEAAIAQQAQAAAAIcAAACiA=</HashCode>
       <FileName>ShoppingCart.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Business_System_Laboration_4.VideoGame" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAQAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Products\VideoGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Business_System_Laboration_4.ViewModelBase" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>YAgAAkBEAEABBAACAAAIYAEChAAABAQ0EAAAABAICCA=</HashCode>
+      <FileName>ViewModels\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Business_System_Laboration_4.WindowEvents" Collapsed="true">
-    <Position X="29.25" Y="1.5" Width="1.5" />
+    <Position X="27" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgiCEAgAAASAAAAAIoIAAAAAAIEQQEFEAgAEAAIiAQA=</HashCode>
       <FileName>WindowEvents.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Business_System_Laboration_4.AddProductWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AddProductWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Business_System_Laboration_4.AddProductViewModel" Collapsed="true">
+    <Position X="18" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QgBAISBwAxJioAJ0CKIAAAzAgVBIw9ABCADEgEiYBDg=</HashCode>
+      <FileName>ViewModels\AddProductViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="Business_System_Laboration_4.ICloseWindow" Collapsed="true">
-    <Position X="27.5" Y="2.75" Width="1.5" />
+    <Position X="23.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>BaseClasses\ICloseWindow.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="Business_System_Laboration_4.BookFormat" Collapsed="true">
-    <Position X="6.5" Y="8" Width="1.5" />
+    <Position X="23.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAACIAAAAAAAA=</HashCode>
       <FileName>enums\BookFormat.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Business_System_Laboration_4.Genre" Collapsed="true">
-    <Position X="3" Y="7" Width="1.5" />
+    <Position X="25.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAQAAAAAAQAIAAAIAAA=</HashCode>
       <FileName>enums\Genre.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Business_System_Laboration_4.MovieFormatType" Collapsed="true">
-    <Position X="6.5" Y="3" Width="1.5" />
+    <Position X="27" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>enums\MovieFormatType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Business_System_Laboration_4.PlatformType" Collapsed="true">
-    <Position X="1.5" Y="3" Width="1.5" />
+    <Position X="23.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQQAAAAAAIIAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>enums\PlatformType.cs</FileName>
