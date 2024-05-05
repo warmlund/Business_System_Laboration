@@ -5,7 +5,6 @@ namespace Business_System_Laboration_4
     public class ViewModelBase : NotifyPropertyChangedBase
     {
         private ShoppingCart _cart;
-        private InventoryManager _inventoryManager;
         private ProductHandler _prodHandler;
         private AddProductViewModel _productViewModel;
         private AddProductWindow _addProductWindow;
@@ -20,7 +19,6 @@ namespace Business_System_Laboration_4
         public Command AddProduct { get; private set; }
         public Command RemoveProduct { get; private set; }
         public Command HandleDelivery { get; private set; }
-        public InventoryManager Inventory { get { return _inventoryManager; } set { if (_inventoryManager != value) { _inventoryManager = value; OnPropertyChanged(nameof(Inventory)); } } }
         public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
         public ProductHandler ProdHandler { get { return _prodHandler; } set { if (_prodHandler != value) { _prodHandler = value; OnPropertyChanged(nameof(ProdHandler)); } } }
 
@@ -35,11 +33,8 @@ namespace Business_System_Laboration_4
 
             _cart = new ShoppingCart();
             _cart.PropertyChanged += ProductPropertyChanged;
-            _inventoryManager = new InventoryManager();
             _prodHandler = new ProductHandler();
             _prodHandler.ModelBase = this;
-
-
         }
 
         #region Shoppingcart

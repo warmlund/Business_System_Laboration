@@ -69,7 +69,6 @@ namespace Business_System_Laboration_4
 
         private void CopyInventory()
         {
-            MessageBox.Show("hej");
             foreach (var book in _originalProdHandler.Books)
             {
                 EditedBooks.Add(new Book(book.Id, book.Amount, book.Price, book.Name, book.Author, book.Language, book.Genre, book.BookFormat));
