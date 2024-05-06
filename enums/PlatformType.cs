@@ -4,6 +4,8 @@ namespace Business_System_Laboration_4
 {
     public enum PlatformType
     {
+        [Description("Ingen info")]
+        None,
         [Description("PC")]
         PC,
         [Description("Playstation 5")]
