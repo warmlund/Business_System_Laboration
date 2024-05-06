@@ -4,6 +4,8 @@ namespace Business_System_Laboration_4
 {
     public enum Genre
     {
+        [Description("Ingen info")]
+        None,
         [Description("Historia")]
         Historia,
         [Description("Kurslitteratur")]
