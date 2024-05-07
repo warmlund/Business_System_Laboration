@@ -26,10 +26,7 @@ namespace Business_System_Laboration_4
         private string _informationTwo;
         private string _informationThree;
         private string _informationFour;
-        private ObservableCollection<string> _bookformats = new ObservableCollection<string>();
         private ObservableCollection<string> _genres = new ObservableCollection<string>();
-        private ObservableCollection<string> _movieFormats = new ObservableCollection<string>();
-        private ObservableCollection<string> _platforms = new ObservableCollection<string>();
         private ObservableCollection<string> _productTypes = new ObservableCollection<string> { "Bok", "Film", "Datorspel" };
         private ObservableCollection<string> _informationOneList = new ObservableCollection<string>();
         private ProductHandler _prodHandler;
@@ -56,10 +53,7 @@ namespace Business_System_Laboration_4
         public string SelectedFormat { get { return _selectedFormat; } set { if (_selectedFormat != value) { _selectedFormat = value; OnPropertyChanged(nameof(SelectedFormat)); ConfirmAddProduct.RaiseCanExecuteChanged(); } } }
         public string SelectedGenre { get { return _selectedGenre; } set { if (_selectedGenre != value) { _selectedGenre = value; OnPropertyChanged(nameof(SelectedGenre)); ConfirmAddProduct.RaiseCanExecuteChanged(); } } }
         public IEnumerable<string> ProductTypes { get { return _productTypes; } }
-        public IEnumerable<string> BookFormats { get { return _bookformats; } }
         public IEnumerable<string> Genres { get { return _genres; } }
-        public IEnumerable<string> MovieFormats { get { return _movieFormats; } }
-        public IEnumerable<string> Platforms { get { return _platforms; } }
         public IEnumerable<string> InformationOneList { get { return _informationOneList; } }
         public Command ConfirmAddProduct { get; private set; }
         public Command AbortAddProduct { get; private set; }
