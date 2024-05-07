@@ -127,6 +127,7 @@
                         <Button Content="Lägg till produkt" Style="{StaticResource ButtonStyle}" Command="{Binding AddProduct}"/>
                         <Button Content="Ta bort produkt" Style="{StaticResource ButtonStyle}" Command="{Binding RemoveProduct}"/>
                         <Button Content="Lägg till leverans" Style="{StaticResource ButtonStyle}" Command="{Binding HandleDelivery}"/>
+                        <Button Content="Synka med centrallager" Style="{StaticResource ButtonStyle}" Command="{Binding SyncWithCentral}"/>
                     </StackPanel>
 
                     <TextBlock Grid.Row="1" Text="Böcker" VerticalAlignment="Center" Margin="10,0,0,0" Style="{StaticResource TextTitleStyles}"/>
