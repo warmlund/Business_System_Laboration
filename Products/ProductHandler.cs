@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.IO;
 using System.Windows;
+using System.Xml;
 
 namespace Business_System_Laboration_4
 {
@@ -242,6 +243,62 @@ namespace Business_System_Laboration_4
                 MessageBox.Show("Fel", "Fel vid borttagande av produkt");
             }
 
+        }
+
+        public void SyncProductDataWithCentral(string xmlData)
+        {
+            var doc = new XmlDocument();
+            try
+            {
+                doc.LoadXml(xmlData);
+                XmlNode productsNode = doc.SelectSingleNode("/response/products");
+                foreach (XmlNode node in productsNode.ChildNodes)
+                {
+
+                    int id = int.Parse(node.SelectSingleNode("id").InnerText);
+                    float price = float.Parse(node.SelectSingleNode("price").InnerText);
+                    int amount = int.Parse(node.SelectSingleNode("stock").InnerText);
+
+                    if (node.Name == "book")
+                    {
+                        Book matchingBook = Books.FirstOrDefault(x => int.Parse(x.Id) == id);
+
+                        if (matchingBook != null)
+                        {
+                            matchingBook.Price = price;
+                            matchingBook.Amount = amount;
+                        }
+
+                    }
+
+                    else if (node.Name == "game")
+                    {
+                        VideoGame matchingGame = VideoGames.FirstOrDefault(x => int.Parse(x.Id) == id);
+                        if (matchingGame != null)
+                        {
+                            matchingGame.Price = price;
+                            matchingGame.Amount = amount;
+                        }
+                    }
+
+                    else if (node.Name == "movie")
+                    {
+                        Movie matchingMovie = Movies.FirstOrDefault(x => int.Parse(x.Id) == id);
+                        if (matchingMovie != null)
+                        {
+                            matchingMovie.Price = price;
+                            matchingMovie.Amount = amount;
+                        }
+                    }
+                }
+
+                MessageBox.Show("Synkning slutförd");
+            }
+
+            catch
+            {
+                MessageBox.Show("Synkning misslyckades");
+            }
         }
     }
 }

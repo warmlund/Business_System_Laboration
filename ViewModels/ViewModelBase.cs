@@ -19,6 +19,7 @@ namespace Business_System_Laboration_4
         public Command AddProduct { get; private set; }
         public Command RemoveProduct { get; private set; }
         public Command HandleDelivery { get; private set; }
+        public Command SyncWithCentral { get; private set; }
         public ShoppingCart Cart { get { return _cart; } set { if (_cart != value) { _cart = value; OnPropertyChanged(nameof(Cart)); } } }
         public ProductHandler ProdHandler { get { return _prodHandler; } set { if (_prodHandler != value) { _prodHandler = value; OnPropertyChanged(nameof(ProdHandler)); } } }
 
@@ -30,6 +31,7 @@ namespace Business_System_Laboration_4
             AddProduct = new Command(AddNewProduct, CanAddProduct);
             RemoveProduct = new Command(RemoveSelectedProduct, CanRemoveProduct);
             HandleDelivery = new Command(CreateNewDelivery, CanCreateNewDelivery);
+            SyncWithCentral = new Command(SyncToCentral, CanSyncToCentral);
 
             _cart = new ShoppingCart();
             _cart.PropertyChanged += ProductPropertyChanged;
@@ -120,6 +122,16 @@ namespace Business_System_Laboration_4
             return true;
         }
 
+        private async void SyncToCentral()
+        {
+            string responseData = await ApiHandler.SyncWithWebAPI();
+            _prodHandler.SyncProductDataWithCentral(responseData);
+        }
+
+        private bool CanSyncToCentral()
+        {
+            return true;
+        }
 
         #endregion
 
