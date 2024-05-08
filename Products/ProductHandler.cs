@@ -267,6 +267,9 @@ namespace Business_System_Laboration_4
                         {
                             matchingBook.Price = price;
                             matchingBook.Amount = amount;
+
+                            if (matchingBook.CartQuantity > 0)
+                                matchingBook.Amount -= matchingBook.CartQuantity;
                         }
 
                     }
@@ -278,6 +281,9 @@ namespace Business_System_Laboration_4
                         {
                             matchingGame.Price = price;
                             matchingGame.Amount = amount;
+
+                            if (matchingGame.CartQuantity > 0)
+                                matchingGame.Amount -= matchingGame.CartQuantity;
                         }
                     }
 
@@ -288,6 +294,9 @@ namespace Business_System_Laboration_4
                         {
                             matchingMovie.Price = price;
                             matchingMovie.Amount = amount;
+
+                            if (matchingMovie.CartQuantity > 0)
+                                matchingMovie.Amount -= matchingMovie.CartQuantity;
                         }
                     }
                 }
