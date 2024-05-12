@@ -10,7 +10,7 @@ This is a C# WPF project developed during the course C# .NET at Karlstad Univers
 
 ### Built With
 
-![GitHub top language](https://img.shields.io/github/languages/top/warmlund/Business_System_Laboration_4)
+![GitHub top language](https://img.shields.io/github/languages/top/warmlund/Business_System_Laboration)
 
 
 
@@ -22,7 +22,7 @@ This is a C# WPF project developed during the course C# .NET at Karlstad Univers
 
 Emelie Wärmlund - @emeliewarmlund@gmail.com
 <br>
-Project Link: [https://github.com/warmlund/Business_System_Laboration_4](https://github.com/warmlund/Business_System_Laboration_4)
+Project Link: [https://github.com/warmlund/Business_System_Laboration](https://github.com/warmlund/Business_System_Laboration)
 <br>
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
