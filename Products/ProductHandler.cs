@@ -8,7 +8,7 @@ namespace Business_System_Laboration_4
 {
     public class ProductHandler : NotifyPropertyChangedBase
     {
-        private readonly string _fileName = "produkter.csv";
+        private readonly string _fileName = "Data/produkter.csv";
         private readonly string _directory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
         private string _filePath;
 
