@@ -13,14 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="produkter.csv">
+    <Resource Include="Data\produkter.csv">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="apiClasses\" />
-    <Folder Include="Products\" />
   </ItemGroup>
 
 </Project>
